@@ -23,7 +23,8 @@
             
         // verify the business link
         var userDetails,productDetails
-   var  businessPathName = window.location.pathname.split("/").pop();
+ 
+   var  businessPathName = localStorage.getItem("getPath");
     var businessHostName = window.location.hostname
     export async function getData() {
         var userBucket =  await get(ref(db,"businessUsers/" + businessPathName))
@@ -54,3 +55,4 @@ export async function addProduct(businessName, data) {
 export function add(){
     return businessPathName
 }
+
