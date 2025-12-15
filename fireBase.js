@@ -59,6 +59,7 @@ export function add(){
 
 export async function root() {
     businessPathName = localStorage.getItem("path")
+     console.log(businessPathName)
         var userBucket =  await get(ref(db,"businessUsers/" + businessPathName))
         if(userBucket.exists()){
             
@@ -74,6 +75,7 @@ export async function root() {
         }
         alert("This user is not registered")
 }
+
 
 
 
