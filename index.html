@@ -296,6 +296,8 @@
         try {
             const {userDetails,productDetails} = await getData()
             localStorage.setItem("getPath",userDetails.businessName);
+            let pathq = window.location.pathname
+            console.log(pathq)
 
         } catch (error) {
             console.log(error)
@@ -304,4 +306,5 @@
 </body>
 
 </html>
+
 
