@@ -1,8 +1,6 @@
 <script>
   // Redirect all unknown routes back to index.html
   const path = window.location.pathname;
-  let businessPathName = window.location.pathname.split("/").pop();
-        localStorage.setItem("newPath",businessPathName);
   const newPath = "/biznet/business/root.html" + window.location.search;
   window.location.replace(newPath);
 </script>
