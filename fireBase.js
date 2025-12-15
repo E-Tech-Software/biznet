@@ -25,7 +25,7 @@
         var userDetails,productDetails
  let businessPathName = window.location.pathname.split("/").pop();
         localStorage.setItem("newPath",businessPathName);
-     console.log(businessPathName)
+     console.log("this",businessPathName)
         localStorage.setItem("path",businessPathName);
     var businessHostName = window.location.hostname
     export async function getData() {
@@ -77,6 +77,7 @@ export async function root() {
         alert("This user is not registered")
      console.log(businessPathName)
 }
+
 
 
 
