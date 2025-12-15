@@ -288,5 +288,27 @@
             </div>
         </div>
   </div>
+    <script type="module" src="../fireBase.js"></script>
+    <script type="module">
+        localStorage.clear()
+         import {getData,addProduct} from "../fireBase.js"
+        var businessName,products;
+        try {
+            const {userDetails,productDetails} = await getData()
+            businessName = userDetails.businessName
+           
+                products = await Object.keys(productDetails).map(key => ({
+                    id: key,
+                    ...productDetails[key]
+                }));
+                
+                loadPage(userDetails,products);  
+            
+
+        } catch (error) {
+            console.log(error)
+        }
+            </script>
 </body>
+
 </html>
