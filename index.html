@@ -295,15 +295,7 @@
         var businessName,products;
         try {
             const {userDetails,productDetails} = await getData()
-            businessName = userDetails.businessName
-           
-                products = await Object.keys(productDetails).map(key => ({
-                    id: key,
-                    ...productDetails[key]
-                }));
-                
-                loadPage(userDetails,products);  
-            
+            localStorage.setItem("getPath",userDetails.businessName);
 
         } catch (error) {
             console.log(error)
@@ -312,3 +304,4 @@
 </body>
 
 </html>
+
