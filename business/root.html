@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            background-color: rgb(239, 226, 218);
+            display: flex;
+            justify-content: space-evenly;
+            align-items:center;
+            padding: 10px;
+        }
+        .header img{
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+        }
+        .headerDetails{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        .headerDetails h4{
+            font-size: 1.5rem;
+            margin-bottom: -2px;
+            font-weight: 900;
+            text-align: center;
+        }
+        .headerDetails p{
+            font-size: 0.8rem;
+            text-align: center;
+            line-height: 18px;
+        }
+        .headerDetails button{
+            padding: 5px 25px;
+            font-size: 0.6rem;
+            color:white;
+            background-color: rgb(212, 97, 97);
+            border: none;
+            outline: none;
+            border-radius: 10px;
+        }
+        .headerAds{
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            
+            
+        }
+        .headerAds img{
+            width:80% ;
+            object-fit: contain;
+            align-self: center;
+            border-radius: 10px;
+        }
+        .products{
+            display: flex;
+            padding: 10px;
+            margin-top: -10px;
+            justify-content: space-around;
+        }
+        .pcard img{
+            width: 100px;
+            height: 100px;
+            object-fit:contain;
+            border-radius: 10px;
+            background-color: white;
+        }
+        .pcard{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(230, 223, 223);
+            padding: 10px;
+            border-radius: 10px;
+            width: 25%;
+        }
+        .ppcard{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(230, 223, 223);
+            padding: 10px;
+            border-radius: 10px;
+            width: 25%;
+        }
+        .ppcard h5{
+            margin-top: 2px;
+            color: purple;
+        }
+        .ppcard h4{
+            margin-top: -20px;
+            margin-bottom: -5px;
+            align-self: flex-end;
+        }
+        .ppcard img{
+             width: 100px;
+            height: 100px;
+            object-fit:contain;
+            border-radius: 10px;
+            background-color: white;
+        }
+        
+        .pcard h5{
+            margin-top: 2px;
+            color: purple;
+        }
+        .pcard h4{
+            margin-top: -10px;
+            margin-bottom: -5px;
+            align-self: flex-end;
+        }
+        .h5{
+            margin-left: 20px;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .productDetails{
+            display: flex;
+            flex-direction: column;
+        }
+        .productDetails button{
+            width: 30%;
+            align-self: flex-end;
+            padding: 5px;
+            border: none;
+            font-size: 1rem;
+            color: white;
+            border-radius: 10px;
+            background-color: rgb(212, 97, 97) ;
+            margin: 20px;
+        }
+        .topBusiness button{
+            width: 30%;
+            align-self: flex-start;
+            padding: 5px;
+            border: none;
+            font-size: 1rem;
+            color: white;
+            border-radius: 10px;
+            background-color: rgb(212, 97, 97) ;
+            margin: 20px;
+        }
+        .topBusiness h3{
+            margin-top: -10px;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: rgb(212, 97, 97);
+        }
+      
+    </style>
+    <div class="body">
+        <div class="header">
+            <div class="headerDetails">
+                <h4 id="bizName">Adiddas Online Store</h4>
+                <p id="bizSlogan">All you need at the click of a button</p>
+                <button>All Products</button>
+            </div>
+            <div class="headerImage">
+                <img id="bizlogo" src="" alt="">
+            </div>
+        </div>
+        <div class="headerAds">
+            <img src="" alt="">
+        </div>
+        <div class="productDetails">
+            <h5 class="h5">Our Products</h5>
+            <div class="products">
+                <div id="pcard" class="pcard">
+                    <img src="" alt="">
+                    <h5></h5>
+                    <h4><span>&#8358;</span> </h4>
+                </div>
+                 <div class="pcard">
+                    <img src="" alt="">
+                    <h5></h5>
+                    <h4><span>&#8358;</span> </h4>
+                </div>
+                 <div class="pcard">
+                    <img src="" alt="">
+                    <h5></h5>
+                    <h4><span>&#8358;</span> </h4>
+                </div>
+            </div>
+            <button id="moreProducts">Discover More</button>
+        </div>
+        <div class="topBusiness">
+            <h3>Top Businesses</h3>
+            <div class="products">
+                <div class="ppcard">
+                    <img src="" alt="">
+                    <h5>E-Tech Software</h5>
+                    <h4>08147309259</h4>
+                </div>
+                 <div class="ppcard">
+                    <img src="" alt="">
+                    <h5>Mavel Clothings</h5>
+                    <h4>0814563563</h4>
+                </div>
+                 <div class="ppcard">
+                    <img src="" alt="">
+                    <h5>Rnb PaperWorks</h5>
+                    <h4>0917464837</h4>
+                </div>
+            </div>
+            <button id="more">Discover More</button>
+        </div>
+    
+    </div>
+    <script type="module" src="../fireBase.js"></script>
+     <script type="module">
+        localStorage.clear()
+         import {getData,addProduct} from "../fireBase.js"
+        var businessName,products;
+        try {
+            const {userDetails,productDetails} = await getData()
+            businessName = userDetails.businessName
+           
+                products = await Object.keys(productDetails).map(key => ({
+                    id: key,
+                    ...productDetails[key]
+                }));
+                
+                loadPage(userDetails,products);  
+            
+
+        } catch (error) {
+            console.log(error)
+        }
+
+        //shuffle Array 
+        function shuffleArray(arr) {
+            let copy = [...arr]; // keep original safe
+            for (let i = copy.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+}
+
+  function loadPage(client,products){
+        var date = Date.now();
+
+        // check subscription
+        //  if(date <= client.expiringDate ){
+        //     // navigate to page expired if its expired
+        //     window.location.href = "PageExpired.html"
+        //     return
+        //  }
+         // run this function for sub not expired
+         
+         var shuffledArray = shuffleArray(products);
+        
+         loadData(client,shuffledArray)
+         
+    }
+    var moreProductsBtn =   document.getElementById("moreProducts");
+    moreProductsBtn.addEventListener("click",()=>{
+        window.location.href = "../productListPage.html"
+    })
+    function loadData(client,shuffledArray){
+        var businessName = document.getElementById("bizName")
+         var businessSlogan = document.getElementById("bizSlogan");
+         var bisLogo = document.getElementById("bizlogo")
+         businessName.textContent = client.businessName;
+         businessSlogan.textContent = client.businessSlogan;
+         bisLogo.src = client.businessLogo;
+        console.log(client)
+        var dashboardProducts = shuffledArray.slice(0,3);
+        //  pass the values to the cards
+        
+   var parent = document.querySelectorAll(".pcard");
+   parent.forEach((child, index) => {
+    if (!child[index]) {
+        child.children[0].src = dashboardProducts[index].ProductUrl;
+        child.children[1].textContent = dashboardProducts[index].productName;
+        child.children[2].childNodes[1].textContent = dashboardProducts[index].productPrice;
+
+        
+    }
+});
+        
+    }
+    
+   
+    </script>
+     <script>
+  // Redirect all unknown routes back to index.html
+// const path = window.location.pathname;
+// const newPath = "/business/index.html" + window.location.search;
+// window.location.replace(newPath);
+</script> 
+</body>
+</html>

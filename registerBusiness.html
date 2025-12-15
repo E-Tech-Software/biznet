@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.0"></script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .main_Body{
+        width: 100%;
+        height: 100vh;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 150px;
+       
+    }
+    .main_Body input{
+        margin-top: 20px;
+        width: 80%;
+        padding: 20px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        border-bottom: 1px solid grey;
+    }
+    .buttons{
+        margin-top: 20px;
+        margin-bottom: 50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+    .main_Body img{
+        width: 200px;
+        height: 200px;
+        margin-top: 50px;
+    }
+    .buttons button{
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        outline: none;
+    }
+    .buttons button:first-child{
+        width: 50%;
+        background-color: rgba(93, 93, 250, 0.863);
+        color:white;
+    }
+    .buttons button:last-child{
+        width: 30%;
+        background-color: red;
+        color: white;
+    }
+    .main_Body label{
+        margin-top: 60px;
+        align-self: flex-start;
+        margin-left: 30px;
+    }
+    .loader{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 150%;
+        background-color: rgba(209, 205, 205, 0.521);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow-y: hidden;
+        transform: scale(0);
+    }
+    .display{
+        display: flex;
+    }
+    .mini{
+        background-color: white;
+        padding: 50px 100px;
+        border-radius: 10px;
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .scale{
+        transition: 0.5s;
+        transform: scale(1);
+    }
+    .scaleHide{
+        transition: 0.5s;
+        transform: scale(0);
+    }
+    .span{
+        border: 5px solid purple;
+        width: 30px;
+        border-radius: 100%;
+        padding: 25px 10px;
+        border-top: 5px solid white;
+        animation: spin linear 2s infinite;
+    }
+    @-webkit-keyframes spin{
+        100%{-webkit-transform: rotate(360deg);}
+    }
+    .mini img{
+        width: 70px;
+        height: 70px;
+    }
+   
+
+</style>
+<body id="body">
+    <div class="main_Body">
+        <img id="logoImg" src="/images/E-T (1).png" alt="">
+        <label for="">Select Business Logo</label>
+        <input id="logo" type="file">
+        <input id="bisName" type="text" placeholder="Business Name" maxlength="15">
+        <input id="bizSlogan" type="text" placeholder="Business Slogan">
+         <input id="bizAddress" type="text" placeholder="Business Address">
+        <input id="bizOwner" type="text" placeholder="Business Owner">
+        <input id="bizPhone" type="phone" placeholder="Mobile" maxlength="11">
+        <input id="bizEmail" type="email" placeholder="Email">
+        <input id="bizFacebook" type="text" placeholder="Facebook name">
+        <input id="logIn" type="password" placeholder="Log In Code" maxlength="4" >
+        <div class="buttons">
+            <button id="regButton">Register</button>
+            <button id="canButton">Cancel</button>
+        </div>
+        <div class="loader">
+            <div class="mini">
+                <div class="span"></div>
+            <p id="respons">Loading</p>
+            </div>
+        </div> 
+        
+    </div>
+    <script type="module">
+        var oneDayInMiliSeconds = 24*60*60*1000
+        var plan = document.querySelector(".planDisplay")
+        var body = document.getElementById("body");
+        var bizName = document.getElementById("bisName");
+        var bizSlogan = document.getElementById("bizSlogan");
+        var bizAddress = document.getElementById("bizAddress");
+        var bizOwner = document.getElementById("bizOwner");
+        var bizPhone = document.getElementById("bizPhone");
+        var bizEmail = document.getElementById("bizEmail");
+        var bizFacebook = document.getElementById("bizFacebook");
+        var logoImg = document.getElementById("logoImg");
+        var bizLogo = document.getElementById("logo");
+        var submitBtn = document.getElementById("regButton")
+        var logIn = document.getElementById("logIn")
+        var cancelBtn = document.getElementById("canButton");
+        var loaderPop = document.querySelector(".loader");
+        var miniPop = document.querySelector(".mini");
+        var reponseMessage = document.getElementById("respons")
+        var successImg = document.getElementById("loaderImg");
+        var spanLoader = document.querySelector(".span")
+        
+        var logoUrl;
+        var globalFile;
+
+           if(loaderPop.hidden == true){
+             body
+           }
+
+    
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+            import{getDatabase, ref,set,child,remove,update,get} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyAevQ-rRmgvgh4Uz3oaEnkkqMuRV-i1M14",
+                authDomain: "business-a33a0.firebaseapp.com",
+                databaseURL: "https://business-a33a0-default-rtdb.firebaseio.com",
+                projectId: "business-a33a0",
+                storageBucket: "business-a33a0.firebasestorage.app",
+                messagingSenderId: "408074741884",
+                appId: "1:408074741884:web:ae1757e5bbe8eeb26941f9"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase()
+
+
+
+
+
+        bizLogo.addEventListener("change", function(){
+            var file = this.files[0]
+            if(file){
+                globalFile = file
+                 var url = URL.createObjectURL(file)
+                 logoUrl = url
+                logoImg.src = logoUrl
+                return
+            }
+            alert("no file detected")
+        })
+        
+    //check empty fields 
+    var resultChecked = () => {
+        var error;
+        if( logoUrl == null){
+            error = "Please select your business logo or profile picture"
+            return error
+        }else if(bizName.value == ""){
+            error = "Please Enter Business Name"
+            return error
+        }else if(bizSlogan.value == ""){
+            error = "Please Enter Your Slogan"
+            return error
+        }else if(bizAddress.value == ""){
+            error = "Please Enter Business Address"
+            return error
+        }else if(bizPhone.value == ""){
+            error = "Please Enter A Valid Mobile Number"
+            return error
+        }else if(bizEmail.value == ""){
+            error = "Please Enter A Valid Email"
+            return error
+        }else if(logIn.value == ""){
+            error = "Please Enter A Valid Code"
+            return error
+        }else{
+            return "valid"
+        }
+    }
+
+    cancelBtn.addEventListener("click",()=>{
+            var pop = document.querySelector(".mini");
+            pop.classList.add("scale")
+    })
+
+   submitBtn.addEventListener("click", async () => {
+   
+    var verifiedStatus = resultChecked();
+    if (verifiedStatus == "valid") {
+        try {
+             body.style.overflowY = "hidden"
+             loaderPop.classList.add("scale")
+            const url = await sendFile(globalFile); // <-- FIXED
+            const successMessage = await registerBusiness({
+                businessName:bizName.value,
+                businessLogo:url,
+                businessSlogan:bizSlogan.value,
+                businessAddress:bizAddress.value,
+                ceo:bizOwner.value,
+                contact:bizPhone.value,
+                email:bizEmail.value,
+                password:logIn.value,
+                website:"etect-software.com/" + bizName.value,
+                facebook:bizFacebook.value,
+                plan:"",
+                paymentDate:"",
+                expiringDate:""
+
+            })
+            if(successMessage == "Successfull"){
+                setTimeout(()=>{
+                    window.location.href = "plan.html"
+                    localStorage.setItem("bucket","businessUsers/" + bizName.value)
+                },5000)
+               
+                reponseMessage.textContent = "redirecting...";
+            }
+        } catch (err) {
+            loaderPop.classList.add("scaleHide");
+            body.style.overflowY = "visible"
+            alert(err);
+        }
+
+    } else {
+        alert(verifiedStatus);
+    }
+});
+
+
+
+
+        //Check if account exist
+    var bucketFile = bizName.value
+        bucketFile = bucketFile.replace(" ","");
+
+    // send file to appwrite
+  async function sendFile(file){
+    var bucket = bizEmail.value.split(".")[0];
+    var userBucket = await get(ref(db,"businessUsers/" + bucketFile))
+    
+        if(userBucket.exists()){
+            userExists(userBucket.val())
+        }else{
+            const client = new Appwrite.Client()
+            .setEndpoint("https://nyc.cloud.appwrite.io/v1") 
+            .setProject("6931d032000b91a19053"); 
+
+            const storage = new Appwrite.Storage(client);
+
+            const response = await storage.createFile(
+            "6931d06b0032a477af31",
+            Appwrite.ID.unique(),
+            file
+            );
+
+            var fileId = response.$id;
+
+            var fileUrl = `https://nyc.cloud.appwrite.io/v1/storage/buckets/6931d06b0032a477af31/files/${fileId}/view?project=6931d032000b91a19053`;
+
+            return fileUrl;
+        }
+    
+}
+
+
+
+async function registerBusiness(data){
+   
+try{
+
+        await  set(ref(db,"businessUsers/"+ bucketFile),data)
+
+        return "Successfull"
+} catch (error){
+        var err = "An error occured "
+        return err
+    }
+}
+
+// user exists Logic
+function userExists (data){
+   if(data.plan == "" || !data.plan){
+     setTimeout(()=>{
+                    window.location.href = "plan.html"
+                },5000)
+               
+                reponseMessage.textContent = " Already registered.Redirecting...";
+   }else{
+    // you have a plan activated
+    
+   }
+}
+
+// i have a plan logic
+function planActive(plan){
+    
+    if(plan.expiringDate >= new Date()){
+        //plan expired, subscription overdue
+    }else{
+        //Plan active, 
+    }
+
+}
+        
+
+        
+    </script>
+</body>
+</html>

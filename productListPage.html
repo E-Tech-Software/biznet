@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            align-items: center;
+        }
+        .header h1{
+            align-self: center;
+            text-transform: uppercase;
+            background:linear-gradient(rgba(87, 86, 86, 0.212)), url(/images/background.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            text-align: center;
+            margin-top: 0;
+            padding: 20px 0px;
+            color: bisque;
+        }
+        .mid_header{
+            display:flex;
+            padding: 0 10px;
+            margin-top: -10px;
+        }
+        .mid_header img{
+            width: auto;
+            height: 50px;
+        }
+        .mid_header span{
+            font-size: 1rem;
+        }
+        .mid_header h2{
+            font-size: 0.8rem;
+        }
+        .headerDetails{
+            padding-left: 10px;
+           
+        }
+        .logo{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            margin-top: -40px;
+        }
+        .logo img{
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            object-fit: contain;
+        }
+        .title{
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+        #name{
+            border-right: 1px solid black;
+            padding-right: 20px;
+        }
+        #web{
+            margin-top: -8px;
+            padding-left: 50px;
+        }
+        .main_body{
+            display: flex;
+            justify-content: flex-start;
+            margin: 10px 50px;
+        }
+        .main_body li{
+            list-style: none;
+            display: flex;
+            font-size: 1.2rem;
+            justify-content: center;
+            align-items: center;
+            gap:10px;
+            background-color: beige;
+            padding: 5px 20px;
+            border-radius: 10px;
+        }
+        .main_body li:last-child{
+            margin-left: 30px;
+        }
+        .main_body li img{
+            width: 20px;
+            height: 20px;
+        }
+        .body_body{
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .card_wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .card img{
+            width: 150px;
+            height: 200px;
+            border-radius: 10px;
+        }
+        .card{
+            background-color: rgb(241, 235, 235);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        }
+        .card h2{
+            font-size: 1.2rem;
+            margin-top: 2px;
+            text-align: center;
+        }
+        .card h1{
+            margin-top: -10px;
+            font-size: 1.5rem;
+            text-align: right;
+            width: 100%;
+        }
+        .card span{
+            margin-top: -10px;
+            align-self: flex-end;
+            text-align: right;
+            background-color: purple;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: white;
+        }
+      
+        .details_body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .details_body li{
+            display: flex;
+            list-style: none;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0px 20px;
+            width: 100%;
+        }
+        .details_body h3{
+            font-size: 0.9rem;
+            font-weight: 700;
+            width: 30%;
+        }
+        .details_body img{
+            width: 20px;
+            height: 20px;
+            padding-right: 10px;
+        }
+        .details_body span{
+            text-align: right;
+            border-radius: 10px;
+            padding:5px 10px;
+            margin-right: 20px;
+          font-size: 0.8rem;
+            width: 80%;
+
+            font-weight: 500;
+        }
+        .con{
+            display: flex;
+            width: 100%;
+          
+            align-items: center;
+            justify-content: space-around;
+        }
+        .details_body{
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+    <div class="body">
+        <div class="header">
+            <h1 id="businessName">E-tech software</h1>
+            <div class="logo"><img id="logo" src="/images/E-T (1).png" alt=""></div>
+            <div class="mid_header">
+                <div class="headerDetails">
+                    <div class="title">
+                         <h2> <span id="name">Nwankwo Emmanuel Ifeanyi</span></h2>
+                        <h2> <span>08147309259</span></h2>
+                    </div>
+                     <span id="web">github.com/E-Tech-Software/app</span>
+                </div>
+            </div>
+        </div>
+        <div class="main_body">
+            <li id="products"><img src="/images/circle add.svg" alt="">Products</li>
+            <li id="store"><img src="/images/add invoice.svg" alt="">Store</li>
+        </div>
+        <div class="body_body">
+            <div id="cardBody" class="card_body">
+                <div class="card_wrapper">
+                    <div class="card">
+                        <img src="/images/female top.jpg" alt="">
+                        <h2>T-Shirt Body Hug</h2>
+                        <h1>&#8358;15,000</h1>
+                        <span>Place Order</span>
+                    </div>
+                    <div class="card">
+                        <img src="/images/man shirt.jpg" alt="">
+                        <h2>T-Shirt Body Hug</h2>
+                        <h1>&#8358;9,700</h1>
+                        <span>Place Order</span>
+                    </div>
+                </div>
+            </div>
+            <div id="storeBody" class="details_body">
+              <li><img src="/images/store.svg" alt="">
+                <div class="con">
+                    
+                    <h3>Store: </h3>
+                    <span id="storeName">E-Tech Software</span>
+              </div>
+                </li>
+              <li><img src="/images/slogan.svg" alt="">
+                 <div class="con">
+                    
+                    <h3>Slogan: </h3>
+                    <span id="slogan">Maximizing Technology For Kingdom Advancement</span>
+              </div>
+                </li> 
+              <li><img src="/images/location.svg" alt="">
+                 <div class="con">
+                    
+                    <h3>Address: </h3>
+                    <span id="address">N0 189 Angwan Jarawa farin gada</span>
+              </div>
+                </li>
+              <li><img src="/images/profile.svg" alt="">
+                <div class="con">
+                    
+                    <h3>CEO: </h3>
+                    <span id="ceo">Nwankwo Emmanuel</span>
+              </div>
+                </li>
+              <li><img src="/images/website.svg" alt="">
+                <div class="con">
+                    
+                    <h3>Website: </h3>
+                    <span id="website">github.com/E-Tech-Software/app</span>
+              </div>
+                </li>
+               <li><img src="/images/contact.svg" alt="">
+                <div class="con">
+                    
+                    <h3>Contact: </h3>
+                    <span id="phone">08147309259</span>
+              </div>
+                </li>
+               <li><img src="/images/email.svg" alt="">
+                <div class="con">
+                    
+                    <h3>Email: </h3>
+                    <span id="email">etechsoftware413@gmail.com</span>
+              </div>
+                </li>
+               <li><img src="/images/whatsapp-brands-solid-full.svg" alt="">
+                <div class="con">
+                    
+                    <h3>WhatsApp: </h3>
+                    <span id="whatsApp"> 08147309259</span>
+              </div>
+                </li>
+               <li><img src="/images/facebook-brands-solid-full.svg" alt="">
+                <div class="con">
+                    
+                    <h3 >Facebook: </h3>
+                    <span id="facebook">E-Tech software</span>
+              </div>
+                </li>
+               <li><img src="/images/shopping cart.svg" alt="">
+                <div class="con">
+                    
+                     <h3>Products: </h3>
+                    <span id="totalProducts">256</span>
+              </div>
+               </li>
+               
+               
+               
+               
+               
+            </div>
+        </div>
+    </div>
+    <script type="module" src="login.js"></script>
+    <script type="module">
+         import {getData,addProduct} from "./login.js"
+        var businessName,products,ceo,quant,owner,addres,web,store,logo,email,website,slogan,whatsapp,contact,face,name;
+        ceo = document.querySelector("#ceo")
+        owner = document.querySelector("#name")
+        web = document.querySelector("#web")
+        addres = document.querySelector("#address")
+        email = document.querySelector("#email")
+        website = document.querySelector("#website")
+        slogan = document.querySelector("#slogan")
+        whatsapp = document.querySelector("#whatsApp")
+        contact = document.querySelector("#phone")
+        face = document.querySelector("#facebook")
+        name = document.querySelector("#businessName")
+        logo = document.querySelector("#logo")
+        quant = document.querySelector("#totalProducts")
+        store = document.querySelector("#storeName")
+        try {
+            const {userDetails,productDetails} = await getData()
+            businessName = userDetails.businessName
+            ceo.textContent = userDetails.ceo
+            owner.textContent = userDetails.ceo
+            email.textContent = userDetails.email
+            addres.textContent = userDetails.businessAddress
+            website.textContent = userDetails.website
+            web.textContent = userDetails.website
+            slogan.textContent = userDetails.businessSlogan
+            whatsapp.textContent = userDetails.contact
+            contact.textContent = userDetails.contact
+            face.textContent = userDetails.facebook
+            name.textContent = userDetails.businessName
+            store.textContent = userDetails.businessName
+            logo.src = userDetails.businessLogo
+            
+            
+               products = await Object.keys(productDetails).map(key => ({
+                    id: key,
+                    ...productDetails[key]
+                }));
+        } catch (error) {
+            console.log(error)
+        }
+        quant.textContent = products.length
+        
+        var productsPanel = document.getElementById("cardBody")
+        var storePanel = document.getElementById("storeBody")
+        document.getElementById("products").addEventListener("click",()=>{
+                
+                    productsPanel.classList.add("show")
+                    storePanel.classList.remove("show")
+                    productsPanel.classList.remove("hide")
+                
+        })
+
+         document.getElementById("store").addEventListener("click",()=>{
+                    
+                    productsPanel.classList.add("hide")
+                    storePanel.classList.add("show")
+                    
+                
+        })
+    </script>
+</body>
+</html>

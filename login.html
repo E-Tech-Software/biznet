@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .body{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin-top: 50px;
+        }
+        .body h1{
+            color:purple;
+            font-weight: 800;
+           
+        }
+        .body input{
+            width: 80%;
+            padding: 10px 20px;
+            outline: none;
+            border-radius: 10px;
+            margin: 20px 10px;
+            border: none;
+            font-size: 1rem;
+        }
+        .body button{
+            width: 50%;
+            background-color: purple;
+            padding: 10px 0px;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            margin-bottom: 50px;
+            margin-top: 32px;
+        }
+    </style>
+    <div class="body">
+        <h1>Login</h1>
+        <input id="email" type="text" placeholder="Enter Email">
+        <input id="password" type="password" placeholder="Enter Pin Code">
+        <button id="loginBtn">Login</button>
+    </div>
+    <script type="module" src="login.js"></script>
+    <script type="module">
+        import {verifyLogin} from "./login.js"
+        var pathFinderGet = localStorage.getItem("pathFinder");
+        var loginBtn = document.getElementById("loginBtn");
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        email.value = pathFinderGet
+        loginBtn.addEventListener("click",()=>{
+            if(email.value == "" && password.value == ""){
+                alert("Empty Fields")
+                return
+            }
+            var loginSuccessful = verifyLogin(email.value,password.value)
+            console.log(loginSuccessful)
+        })
+
+        
+    </script>
+</body>
+</html>

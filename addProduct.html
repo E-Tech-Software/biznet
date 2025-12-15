@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.0"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: aliceblue;
+        }
+        .mainbody{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .mainbody h3{
+            align-self: flex-start;
+            margin-left: 30px;
+        }
+        .mainbody img{
+            margin: 10px 20px;
+            width: 70%;
+            height: 50%;
+            background-color: rgba(196, 193, 193, 0.61);
+            padding: 20px;
+            border-radius: 10px;
+
+        }
+        .mainbody input{
+            width: 80%;
+            margin: 20px 0px;
+            padding:10px 20px;
+            border: none;
+            background-color: aliceblue;
+            border-bottom: 1px solid rgba(126, 122, 122, 0.733);
+            font-size: 1rem;
+            outline: none;
+
+        }
+        .mainbody button{
+            margin: 20px 0px;
+            padding: 10px 70px;
+            background-color: rgba(187, 160, 187, 0.699);
+            font-size: 1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 10px;
+        }
+        .wrapper{
+            background-color: rgba(143, 139, 139, 0.116);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 110%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        .spinner span{
+            font-size: 1.5rem;
+        }
+        .spinner{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.822);
+            padding: 50px 50px;
+            border-radius: 10px;
+            
+
+        }
+        .spin{
+            border: 5px solid black;
+            border-top: 0px;
+            padding: 2;
+            height: 80px;
+            border-radius: 100%;
+            margin-bottom: 20px;
+            width: 80px;
+            text-align: center;
+            animation: spin 0.8s infinite linear;
+
+        }
+        @keyframes spin {
+            0%{
+                rotate: 0deg;
+            border-color: aqua;  
+            }
+            25%{
+                rotate: 90deg;
+                border-color: red; 
+            }
+            50%{
+                 rotate: 180deg;
+                border-color: rgb(179, 255, 0); 
+            }
+            75%{
+                 rotate: 270deg;
+                border-color: rgb(228, 87, 164); 
+            }
+            100%{
+                 rotate: 360deg;
+                border-color: rgb(89, 87, 228); 
+            }
+
+            
+        }
+        .success{
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            padding: 20px 70px;
+            gap: 30px;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+        .success button{
+            padding: 10px 50px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            background-color: red;
+            color: white;
+            font-weight: 600;
+        }
+        .success span{
+            font-size: 1.5rem;
+        }
+        .success img{
+            width: 100px;
+            height: 100px;
+        }
+        
+
+    </style>
+    <div class="body">
+        <div class="mainbody">
+            <h3>Add Product</h3>
+            <img id="imagePreview" accept="png,jpg,jpeg" src="/images/add item.svg" alt="">
+            <input type="file" id="imagePicker">
+            <input id="product" type="text" placeholder="Product" value="">
+            <input id="price" type="number" placeholder="Price &#8358;" value="">
+            <button id="add">Add Product</button>
+        </div>
+        <div id="wrapper" class="wrapper">
+            
+        </div>
+        
+        <template id="template"> 
+           <div id="spinnerCard" class="spinner">
+                <div class="spin"></div>
+                <span>Adding Product....</span>
+             </div>
+              <div id="successCard" class="success">
+                <img src="/images/checked.svg" alt="">
+                <span>Successful</span>
+                <button id="dismiss"> Dismiss</button>
+             </div>
+             
+        </template>
+        
+        
+    </div>
+    <script type="module" src="fireBase.js"></script>
+    <script type="module">
+        import {getData,addProduct} from "./fireBase.js"
+        var businessName;
+        try {
+            const {userDetails,productDetails} = await getData()
+            businessName = userDetails.businessName
+        } catch (error) {
+            console.log(error)
+        }
+        
+        
+        //add image to the frame
+        var globalFile;
+        var imagePreview = document.getElementById("imagePreview")
+        var imagePicker = document.getElementById("imagePicker")
+        var template = document.getElementById("template");
+        var clone = template.content.cloneNode(true);
+        var spinnerCard = clone.getElementById("spinnerCard")
+        var successCard = clone.getElementById("successCard")
+        var wrepper = document.getElementById("wrapper")
+        var dismissBtn = clone.getElementById("dismiss")
+        var addBtn = document.getElementById("add")
+        var imageUrl;
+        var product = document.getElementById("product");
+        var price = document.getElementById("price");
+        addBtn.addEventListener("click", async ()=>{
+            if(product.value == "" && price.value == "" ){
+                alert("empty fields") 
+                return
+            }
+            try {
+            
+                wrepper.style.display = "flex"
+                 wrepper.appendChild(spinnerCard)
+                var productValue = product.value
+                var priceValue = price.value
+                var fileUrl = await send(globalFile);
+                var submitDataResponse = await submitProduct({
+                    ProductUrl: fileUrl,
+                    productName : productValue,
+                    productPrice : priceValue
+                })
+                if(submitDataResponse== "Successfull"){
+                    wrepper.innerHTML = "";
+                     wrepper.appendChild(successCard);
+                     //console.log(submitDataResponse)
+                     return
+                }else{
+                    console.log(submitDataResponse)
+                }
+                
+            } catch (error) {
+                
+            }
+        })
+        dismissBtn.addEventListener("click",()=>{
+            wrepper.innerHTML = ""
+            product.value = ""
+            price.value = ""
+            wrepper.style.display = "none"
+        })
+       imagePicker.addEventListener("change",function (){
+        var file = this.files[0]
+        globalFile = file
+        if(file){
+            imagePreview.src = URL.createObjectURL(file)
+            imageUrl = URL.createObjectURL(file)
+        }
+       })
+       async function send(file){
+             const client = new Appwrite.Client()
+            .setEndpoint("https://nyc.cloud.appwrite.io/v1") 
+            .setProject("6931d032000b91a19053"); 
+
+            const storage = new Appwrite.Storage(client);
+
+            const response = await storage.createFile(
+            "6931d06b0032a477af31",
+            Appwrite.ID.unique(),
+            file
+            );
+
+            var fileId = response.$id;
+
+            var fileUrl = `https://nyc.cloud.appwrite.io/v1/storage/buckets/6931d06b0032a477af31/files/${fileId}/view?project=6931d032000b91a19053`;
+
+            return fileUrl;
+       }
+async function submitProduct(data) {
+    try {
+        return await addProduct(businessName, data);
+    } catch (err) {
+        return err;
+    }
+}
+
+    </script>
+</body>
+</html>

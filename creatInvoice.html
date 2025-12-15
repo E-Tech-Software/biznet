@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            margin: 0;
+            padding:0;
+            background-color: rgba(255, 255, 255, 0.616);
+           
+        }
+        .mainBody{
+            margin:10px;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .body{
+            margin: 20px 0px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .cardInvoice{
+            width: 100%;
+            background-color: rgb(240, 240, 247);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            
+        
+        }
+        .cardInvoice select{
+            width: 100%;
+            padding: 10px;
+            outline: none;
+            border-radius: 5px;
+        }
+        .cardInvoice p{
+            margin-top: -10px;
+            margin-bottom: 1px;
+            padding: 2px;
+            align-self: flex-start;
+            color: purple;
+        }
+        .priceCard{
+            display: flex;
+            width: 100%;
+            gap:10px;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .priceCard input{
+            padding: 10px;
+            margin: 5px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            text-indent: 3px;
+        }
+        .priceCard img{
+            width: 20px;
+            height: 20px;
+        }
+        .addItem{
+            margin-top: 30px;
+            align-self: flex-end;
+        }
+        .addItem button{
+            padding: 10px 25px;
+            border: none;
+            font-size: 1rem;
+            border-radius: 10px;
+        }
+        .head h2{
+            margin-top: 20px;
+        }
+        .addItem button:first-child{
+            background-color: purple;
+            border-radius: 10px;
+            color: white;
+        }
+        .head h3{
+            font-size: 1rem;
+            margin-bottom: 2px;
+            margin-top: 2px;
+            align-self: flex-start;
+            margin-left: -100px;
+            color: purple;
+        }
+        .sum{
+            align-self: flex-end;
+        }
+        .sum{
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            gap:5px;
+        }
+        .invoiceDisplay{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height:100%;
+            background-color: rgba(128, 128, 128, 0.466);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0);
+
+        }
+        .mini{
+        background-color: white;
+        padding: 50px 50px;
+        border-radius: 10px;
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .span{
+        border: 5px solid purple;
+        width: 30px;
+        border-radius: 100%;
+        padding: 25px 10px;
+        border-top: 5px solid white;
+        animation: spin linear 2s infinite;
+    }
+    @-webkit-keyframes spin{
+        100%{-webkit-transform: rotate(360deg);}
+    }
+    .downloadBtn button{
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+         background-color:purple;
+        color: white;
+        margin-right: 20px;
+        font-size: 1.2rem;
+    }
+   
+    .flexDisplay{
+        display: flex;
+    }
+    .blockDisplay{
+        display: block;
+    }
+    .none{
+        display: none;
+    }
+    .downloadBtn{
+       transform: scale(0);
+    }
+    .visible{
+         transform: scale(1);
+         transition: 0.5s linear;
+    }
+    #respons{
+        font-size: 1.5rem;
+    }
+      
+
+    </style>
+    <body class="bod">
+        
+    
+    <div class="mainBody">
+        <div class="head">
+            <h2>Generate Invoice</h2>
+            <h3>Invoices</h3>
+        </div>
+        <div class="body">
+            <div class="cardDisplay">
+                 <div id="cardInvoice" class="cardInvoice">
+                <p>Select Product</p>
+                <select class="item">
+                </select>
+                <div class="priceCard">
+                    <h3>&#8358;</h3>
+                    <input type="number" placeholder="Price" id="price" value="">
+                    <img id="minu_quantity" src="/images/add item.svg" alt="">
+                    <h4 id="quantity">0</h4>
+                    <img class="add_quantity" id="add_quantity" src="/images/add invoice.svg" alt="">
+                </div>
+                <div class="sum">
+                    <h4>Total:</h4>
+                    <h4 id="total">0</h4>
+                </div>
+            </div>
+            </div>
+           
+                <div class="addItem">
+                    <button id="generate">Create Invoice</button>
+                    <button id="addItem">Add item</button>
+
+                </div>
+                <div class="invoiceDisplay">
+                 <div class="loader">
+                        <div class="mini">
+                            <div class="span"></div>
+                        <p id="respons">Generating Invoice...</p>
+                        <div class="downloadBtn">
+                            <button id="download">Download Invoice</button>
+                        </div>
+                        </div>
+                 </div> 
+                </div>
+                <template class="loader">
+
+                </template>
+                <template class="displayInvoice"></template>
+        </div>
+    </div>
+    </body>
+    <script type="module" src="login.js"></script>
+    <script type="module">
+          import {getData,addProduct} from "../login.js"
+          
+        var businessName,products;
+        try {
+            const {userDetails,productDetails} = await getData()
+            businessName = userDetails.businessName
+               products = await Object.keys(productDetails).map(key => ({
+                    id: key,
+                    ...productDetails[key]
+                }));
+                loadPage(userDetails,products);
+                
+
+        } catch (error) {
+            console.log(error)
+        }
+
+
+    var businessName,slogan,address,email,phone,website,date,tableHeader,image,ceo,businessLogo
+    function loadPage(clients,products){
+        products.forEach((product)=>{
+            //work on each product id the products list is an array
+            var options = document.createElement("option")
+            var select = document.querySelector(".item");
+            options.textContent = product.productName
+              select.appendChild(options);
+        })
+        
+           businessName = clients.businessName
+           slogan = clients.businessName;
+           address = clients.businessAddress;
+           email =clients.email;
+           phone = clients.contact;
+           website = clients.website;
+           ceo = clients.ceo;
+           businessLogo = clients.businessLogo;
+           date = new Date()
+        
+    }
+
+        var generateBtn = document.getElementById("generate")
+        var products = []
+        var businessInfor;
+     document.querySelector(".cardDisplay").addEventListener("click", function(e) {
+
+    // Check if an ADD image was clicked
+    if (e.target.classList.contains("add_quantity")) {
+
+        // Get the parent .cardInvoice
+        const parentCard = e.target.closest(".cardInvoice");
+        
+
+        // Example: update the quantity in this specific card
+        let price = parentCard.querySelector("#price");
+        var priceValue = price.value
+        
+        let qty = parentCard.querySelector("#quantity");
+        qty.textContent = Number(qty.textContent) + 1;
+        var quant = qty.textContent
+        let total = Number(priceValue) * quant
+        let totalcon = parentCard.querySelector("#total")
+        totalcon.textContent = total.toLocaleString()
+    }
+
+    // Check if a MINUS image was clicked
+    if (e.target.id === "minu_quantity") {
+
+        const parentCard = e.target.closest(".cardInvoice");
+         let price = parentCard.querySelector("#price");
+        var priceValue = price.value
+
+        let qty = parentCard.querySelector("#quantity");
+        qty.textContent = Math.max(0, Number(qty.textContent) - 1);
+        var quant = qty.textContent
+        let total = Number(priceValue) * quant
+        let totalcon = parentCard.querySelector("#total")
+        totalcon.textContent = total.toLocaleString()
+    }
+
+});
+
+        var body = document.querySelector(".cardDisplay");
+        var count = 1;
+        generateBtn.addEventListener("click", ()=>{
+            window.scrollTo({
+                top:0,
+                behavour: "smooth"
+            })
+            var loading = document.querySelector(".invoiceDisplay");
+            var tag = document.querySelector(".bod")
+            tag.style.overflowY = "hidden"
+            loading.classList.add("visible")
+             var downloadBtnLayout =  document.querySelector(".downloadBtn")
+            setTimeout(()=>{
+            var children = body.querySelectorAll(".cardInvoice")
+           var purcahsedItems = []
+           var totalStock = 0
+           children.forEach((child,index)=>{
+            var sn = index + 1;
+            var item = child.querySelector(".item").value
+            var quantity = child.querySelector("#quantity").textContent
+            var unitPrice = child.querySelector("#price").value
+            var totalPrice = child.querySelector("#total").textContent
+            totalStock += Number(totalPrice.replace(/,/g,""))
+            purcahsedItems.push([sn,item,quantity,unitPrice,totalPrice])  
+           })
+          
+          
+           tableHeader = [["S/N","Items","Quantity","Unit Price","Total Price"]]
+
+           // send invoice to jsPdf for generating
+                 const {jsPDF} = window.jspdf;
+                 var docsPdf = new jsPDF();
+
+             var pageWidth = docsPdf.internal.pageSize.getWidth();
+             // business header title text
+             docsPdf.setFontSize(25);
+             var textWidth = docsPdf.getTextWidth(businessName);
+             var xPosition = (pageWidth-textWidth)/2;
+             docsPdf.text(xPosition,15,businessName);
+            //set other details
+             docsPdf.setFontSize(12);
+             var sloganWith = docsPdf.getTextWidth(slogan)
+             var sloganXWith = (pageWidth-sloganWith)/2;
+             docsPdf.text(sloganXWith,22,slogan);
+             docsPdf.text(10,32,"Head Office");
+             docsPdf.text(10,42,"Address:    "+address);
+             docsPdf.text(10,52, "Email:    "+email);
+             docsPdf.text(10,62,"Mobile Number:    "+phone);
+             docsPdf.text(10,72,"Website:   "+website);
+             docsPdf.text(10,82, "Date:   "+date);
+
+             docsPdf.autoTable({
+                head: tableHeader,
+                body: purcahsedItems,
+                theme: 'grid',
+                startY: 90,
+                cellPadding:20,
+
+            });
+            
+            var finalY = docsPdf.lastAutoTable.finalY;
+            docsPdf.text(150,finalY+10, "Total Payment:    " +totalStock.toLocaleString() );
+            docsPdf.text(150,finalY+20, "Signed:  Sales Rep");
+            
+           
+
+            
+
+            document.getElementById("download").addEventListener("click",()=>{
+                 docsPdf.save('E-Tech Invoice.pdf');
+                 var blob = docsPdf.output('blob')
+                 var pdfurl = URL.createObjectURL(blob);
+                 loading.classList.remove("visible")
+                  tag.style.overflowY = "auto"
+            })
+
+
+
+           //remove loading 
+         downloadBtnLayout.classList.add("visible")
+         var res = document.getElementById("respons").textContent = "Invoice Generated"
+          
+            },5000)
+
+           console.log("Generating Please Wait.....");
+        })
+         var addQuantityBtn = document.querySelectorAll(".add_quantity")
+        var addItemBtn = document.getElementById("addItem").addEventListener("click",()=>{
+            if(count == 15){
+                alert("Maximum number of items reached,upgrade to add more items")
+                return
+            }
+             var invoiceCard = document.getElementById("cardInvoice");
+             var invoiceCardClone = invoiceCard.cloneNode(true);
+           var clone = invoiceCardClone.querySelector("#quantity")
+            clone.textContent = 0
+             count += 1
+             body.appendChild(invoiceCardClone);
+        })
+       
+        
+
+       
+    </script>
+    
+</body>
+</html>

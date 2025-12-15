@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            
+            background: linear-gradient(
+    to bottom,
+    #eef5ff 0%,
+    #edf1fc 60%,
+    #ffffff 100%
+  );
+        }
+        .main_container{
+            width: 100%;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .header{
+            background-color: white;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 10px 0px;
+            font-size: 18px;
+            list-style: none;
+            position: fixed;
+            margin-top: -10px;
+            width: 100%;
+            gap: 20px;
+            border-bottom: 1px solid rgb(206, 239, 250);
+            z-index: 10;
+        }
+        .header li:last-child{
+            background-color: black;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 10px;
+        }
+       
+      
+        .header img{
+            width: 150px;
+            height: 50px;
+            margin:  10px;
+            object-fit: contain;
+        }
+        .body_header h1{
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            color: #7c3aed; /* purple */
+            margin: 0;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, sans-serif;
+        
+           
+        }
+        .body_header{
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            margin-top: 150px;
+            justify-content: center;
+            align-items: center;
+          
+        
+      
+        }
+        .hero_subtext{
+             font-size: 1.3rem;
+                line-height: 1.6;
+                font-weight: 400;
+                color: #4b5563; /* soft dark gray */
+                max-width: 700px;
+                margin: 20px auto 0;
+                font-family: "Inter", -apple-system, BlinkMacSystemFont,
+                "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                margin: 10px 15px;
+                text-align: center;
+            }
+            .headerbtn{
+                width: 80%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                justify-items: center;
+                margin-top: 10px;
+            }
+            .headerbtn button{
+                padding: 10px;
+                font-size: 1rem;
+                border-radius: 5px;
+                border: none;
+                font-weight: 700;
+            }
+             .headerbtn button:first-child{
+                background-color: black;
+                color: white;
+             }
+              .headerbtn button:last-child{
+                background-color: white;
+                color: black;
+              }
+              .body_section{
+                margin-top: 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+              }
+              .body_section h2{
+                color: #202122;
+              }
+              .body_section img{
+                margin:50px 0;
+                object-fit: contain;
+                padding-bottom: 10px;
+                overflow-x: hidden;
+                
+              }
+             
+              .scrollImg{
+              display: flex;
+             
+                 
+                 
+              }
+              .img{
+                flex: 0 0 auto;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+                padding: 20px;
+                margin: 10px;
+                
+              
+              }
+              .image{
+                animation: rotateImg 10s infinite linear;
+                display: flex;
+              }
+              @keyframes rotateImg {
+             from{translate: 0;}
+             to{translate: -100%;}
+              }
+              .body_section p{
+                padding: 10px;
+                font-size: 1rem;
+                margin: 10px;
+                text-align: center;
+                letter-spacing: 1px;
+                font-weight: 700;
+                color:#4b5563;
+              }
+              .middle_body h2{
+                font-size: 2rem;
+                font-weight: 900;
+                padding: 10px;
+                margin: 10px;
+                text-align: center;
+              }
+              .card{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #4b5563;
+                margin: 20px;
+                padding: 10px;
+                border-radius: 10px;
+              }
+              .card h3{
+                margin: 10px;
+              }
+              .card p{
+                margin-top: -10px;
+              }
+              .card i img{
+                width: 50px;
+                height: 50px;
+                margin: 0;
+                padding:0;
+                object-fit: contain;
+                
+              
+              }
+    </style>
+  <div class="main_container">
+    <div class="header">
+        <li>Menu</li>
+         <img src="/images/E-T (1).png" alt="">
+        <li>Log In</li>
+    </div>
+    <div class="body">
+        <div class="body_header">
+              <h1>
+                Business Listing Website
+                </h1>
+                <p class="hero_subtext">
+                  Discover Trusted Businesses Near You — <strong>All in One Place.</strong>
+                   Find verified local services, compare options, and connect instantly. Your perfect business is just a search away.<br>
+                    Generate <strong>beautiful and professional</strong>
+                  invoice, download as <strong>PDF instantly</strong> and share with your clients
+                  
+                    </p>
+                    <div class="headerbtn">
+                        <button>Register A Business</button>
+                        <button>Browse Samples</button>
+                    </div>
+            </div>
+            <div class="body_section">
+                <h2>Professional Invoice Examples</h2>
+                <div class="scrollImg">
+                  <div class="image">
+                    <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                     <img  class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                      <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                       <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                  </div>
+                   <div aria-hidden class="image">
+                    <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                     <img  class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                      <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                       <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+ 
+                  </div>
+                   <div aria-hidden class="image">
+                    <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                     <img  class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                      <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                       <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+ 
+                  </div>
+                   <div aria-hidden class="image">
+                    <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                     <img  class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                      <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+                       <img class="img" src="/images/Screenshot 2025-11-26 223212.png" alt="">
+ 
+                  </div>
+                   
+                </div>
+                <p>Choose from 33 professional templates • Customize fonts • Download as PDF instantly</p>
+                <div class="middle_body">
+                  <h2>Why Choose Our Invoice Generator?</h2>
+                  <div class="card_wrapper">
+                    <div class="card">
+                      <i><img src="/images/lighting fast.svg" alt=""></i>
+                      <h3>33 Professional Templates</h3>
+                      <p>Choose from modern, classic, and creative designs tailored for every industry</p>
+                    </div>
+                      <div class="card">
+                      <i></i>
+                      <h3>33 Professional Templates</h3>
+                      <p>Choose from modern, classic, and creative designs tailored for every industry</p>
+                    </div>
+                      <div class="card">
+                      <i></i>
+                      <h3>33 Professional Templates</h3>
+                      <p>Choose from modern, classic, and creative designs tailored for every industry</p>
+                    </div>
+                      <div class="card">
+                      <i></i>
+                      <h3>33 Professional Templates</h3>
+                      <p>Choose from modern, classic, and creative designs tailored for every industry</p>
+                    </div>
+                      <div class="card">
+                      <i></i>
+                      <h3>33 Professional Templates</h3>
+                      <p>Choose from modern, classic, and creative designs tailored for every industry</p>
+                    </div>
+                      <div class="card">
+                      <i></i>
+                      <h3>33 Professional Templates</h3>
+                      <p>Choose from modern, classic, and creative designs tailored for every industry</p>
+                    </div>
+                  </div>
+
+                </div>
+                
+            </div>
+        </div>
+  </div>
+</body>
+</html>

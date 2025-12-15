@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0 ;
+        padding: 0;
+    }
+    .header_section{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: rgb(185, 185, 247);
+        padding: 10px 20px;
+        background: linear-gradient(rgba(88, 87, 87, 0.5)),url(/images/background.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size:cover;
+        height: 100px;
+    }
+     .menu{
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .logo{
+        margin-top: 130px;
+        margin-left: 30%;
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+
+    }
+    .main_body{
+        display: flex;
+        flex-direction: column;
+        margin: 25px 3px;
+        align-items: center;
+    }
+    .contact{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: -15px;
+    }
+    .contact p:first-child{
+    width: 30%;
+    border-right: 1px solid black;
+    
+    }
+    #business_name{
+        text-transform:uppercase;
+        text-align: center;
+    }
+    .product_heading h3{
+        margin-top: -5px;
+        position: absolute;
+        margin-left: -190px;
+        background-color:rgba(187, 172, 172, 0.345);
+        padding: 10px 40px;
+        font-size: 1.1em;
+        border-radius: 10px;
+        text-transform: capitalize;
+        font-weight: 900;
+        
+    }
+    .menu_bar{
+        position: absolute;
+        display: none;
+        width: 300px;
+        height: 100vh;
+        background-color: aliceblue;
+        z-index: 3333;
+        
+       
+    }
+    .menu_bar_header{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 1px solid purple;
+        margin-top: 20px;
+    }
+    .menu_bar_header img{
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+    }
+    .menu_bar_header img:first-child{
+        width: 30px;
+        height: 30px;
+    }
+    .menu_bar_header h2{
+        text-transform: capitalize;
+        font-size: 1.2rem;
+    }
+    .menu_list li{
+        list-style: none;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    .menu_list li img{
+        width: 30px;
+        height: 30px;
+    }
+    .menu_list{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px;
+    }
+    .show_nav_bar{
+        display:block;
+       
+    }
+    .hide_nav_bar{
+        display:none;
+        
+    }
+    .display_body{
+        height: auto;
+        overflow-y: auto;
+        margin-top: 40px;
+        padding: 2px 20px;
+    }
+    .btn{
+        display: flex;
+        align-items: center;
+        padding: 5px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+
+    }
+    .btn img{
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+
+    }
+    table{
+        border-collapse: collapse;
+        width: 100%;
+       
+        
+    }
+    .add_product{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .table{
+        align-self: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+    td{
+        border: 1px solid;
+        text-align: center;
+        padding: 5px;
+    }
+    tr:first-child{
+        background-color: purple;
+        color: white;
+    }
+
+    tr:nth-child(odd){
+       background-color: rgb(155, 114, 155);
+       color: white;
+    }
+    td:first-child{
+        border-left: none;
+    }
+    td:last-child{
+        border-right: none;
+    }
+   
+   
+</style>
+<body>
+    <div class="body">
+        <div id="menu_bar" class="menu_bar">
+            <div class="menu_bar_header">
+                <img id="closeMenu" src="/images/close menu.svg" alt="">
+                <h2>E-tech software</h2>
+                <img src="/images/E-T (1).png" alt="">
+            </div>
+            <div class="menu_list">
+                    <li><img src="/images/shopping cart.svg" alt="">Products</li>
+                    <li><img src="/images/receipt.svg" alt="">Invoice</li>
+                    <li><img src="/images/business center.svg" alt="">My Store</li>
+                    <li><img src="/images/settings.svg" alt="">Profile</li>
+                    <li><img src="/images/whatsapp-brands-solid-full.svg" alt="">WhatsApp Link</li>
+                    <li><img src="/images/payments.svg" alt="">Developer</li>
+                </div>
+        </div>
+        <div class="header_section">
+            <img id="openMenu" class="menu" src="/images/menu.svg" alt="">
+            <img class="logo" src="/images/E-T (1).png" alt="">
+            <h2></h2>
+        </div>
+        <div class="main_body">
+            <div class="name">
+                <h1 id="business_name">
+                    E-tech Software
+                </h1>
+            </div>
+            <div class="contact">
+                <p>08147309259</p>
+                <p>nwankwoe413@gmail.com</p>
+            </div>
+           
+        </div>
+         <div class="display_body">
+                <div class="add_product">
+                    <div class="btn_wrapper">
+                        <button class="btn"><img src="/images/add item.svg" alt=""> Add Invoice</button>
+                    </div>
+                    <div class="table">
+                        <table>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th></th>
+                                <th></th>
+
+                            </tr>
+                            <tr>
+                                <td>123213</td>
+                                <td>Indomie Supreme</td>
+                                <td>Download</td>
+                                <td>Delete</td>
+                            </tr>
+                            <tr>
+                                <td>123213</td>
+                                <td>Indomie Supreme</td>
+                                <td>Download</td>
+                                <td>Delete</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+    </div>
+    <script src="verify.js"></script>
+    <script>
+        var addBtn = document.querySelector(".btn")
+        addBtn.addEventListener("click",()=>{
+            window.location.href = "creatinvoice.html"
+        })
+        var navBar = document.getElementById("menu_bar")
+        document.getElementById("openMenu").addEventListener("click",()=>{
+            navBar.classList.add("show_nav_bar")
+        })
+        document.getElementById("closeMenu").addEventListener("click",()=>{
+            navBar.classList.remove("show_nav_bar")
+        })
+        let path = location.pathname.split("/").pop();
+        console.log(path)
+        var date = Date.now()
+         var oneDayInMiliSeconds = 24*60*60*1000 * 30 + date
+         var dateSr = new Date(oneDayInMiliSeconds)
+        console.log(date)
+        console.log(oneDayInMiliSeconds)
+        console.log(dateSr)
+         var item = localStorage.setItem("name","Emmanuel")
+        var getValue = localStorage.getItem("name")
+    console.log(getValue)
+
+    </script>
+  
+</body>
+</html>

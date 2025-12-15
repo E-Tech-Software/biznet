@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://sdk.monnify.com/plugin/monnify.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+    <style>
+        body{
+            overflow-y: auto;
+        }
+         .planDisplay{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: rgb(221, 216, 216);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        overflow-y: hidden;
+    }
+    .planCard{
+        background-color: white;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        padding: 20px 0px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .planCard:first-child{
+        margin-top: 40px;
+    }
+    .planCard:last-child{
+        margin-bottom: 40px;
+    }
+    .planCard ul{
+        align-self: flex-start;
+        margin-top: -10px;
+    }
+    .planCard h1{
+        margin-top: 5px;
+    }
+    .planCard h2{
+        margin-top: -5px;
+        color: purple;
+        font-size: 1.5rem;
+    }
+    .planCard p {
+        margin-top: -5px;
+       
+    }
+    .planCard h4{
+        margin-top: -5px;
+    }
+    .sub{
+         background-color: purple;
+         color: white;
+         padding: 5px 50px;
+         border-radius: 20px;
+         font-size: 1.2rem;
+    }
+    .planCard button{
+        padding: 10px 100px;
+        font-size: 1.2rem;
+        background-color:purple;
+        color: white;
+        border: none;
+        border-radius: 10px;
+    }
+    .planCard li{
+        margin-top: 10px;
+        font-size: 1rem;
+    }
+    .pop{
+        position:absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height:100%;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        overflow-y: hidden;
+        transform: scale(0);
+    }
+       .span{
+        border: 5px solid purple;
+        width: 30px;
+        border-radius: 100%;
+        padding: 25px 10px;
+        border-top: 5px solid white;
+        animation: spin linear 2s infinite;
+    }
+    @-webkit-keyframes spin{
+        100%{-webkit-transform: rotate(360deg);}
+    }
+    .mini{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .loader{
+        transform: scale(0);
+    }
+    .confirmPayment{
+        background-color: rgba(221, 218, 218, 0.678);
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        padding: 20px;
+        border-radius: 10px;
+   
+    }
+    .plain{
+        align-self: flex-start;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+
+    }
+    .plain span{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.3rem;
+    }
+    .plain h3{
+        font-size: 1.3rem;
+        
+    }
+    .confirmPayment button{
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        height: 40px;
+        border: none;
+        border-radius: 10px;
+        background-color: purple;
+        color: white;
+        outline: none;
+    }
+    .confirmPayment button span{
+        margin-left: 20px;
+    }
+    .show{
+        transform: scale(1);
+    }
+    
+    
+    </style>
+    <div class="planDisplay">
+           <div class="planCard">
+             <h1>Monthly Plan</h1>
+             <h2>&#8358; 999</h2>
+             <p class="sub">&#8358; 699 Monthly subscription</p>
+             <h4>Billed Monthly</h4>
+             <p>Features</p>
+             <ul>
+                <li class="items">Business Website</li>
+                <li class="items">Product Page</li>
+                <li>Contact Page</li>
+                <li>Admin Dashboard</li>
+                <li>Invoice Generator</li>
+                <li>5 Maximum Item Per Invoice</li>
+                <li>15 Maximum Invoice</li>
+                <li>WhatsApp Link Generator</li>
+                <li>Direct WhatsApp Messaging</li>
+             </ul>
+             <button id="monthlyPlan">Purchase Plan</button>
+           </div>
+           <div class="planCard">
+             <h1>Yearly Plan</h1>
+             <h2>&#8358; 2,959</h2>
+             <p class="sub"> &#8358; 4,899 Yearly subscription</p>
+             <h4>Billed Yearly</h4>
+             <p>Features</p>
+             <ul>
+                <li class="items">Business Website</li>
+                <li class="items">Product Page</li>
+                <li>Contact Page</li>
+                <li>Admin Dashboard</li>
+                <li>Invoice Generator</li>
+                <li>10 Maximum Item Per Invoice</li>
+                <li>50 Maximum Invoice</li>
+                <li>WhatsApp Link Generator</li>
+                <li>Direct WhatsApp Messaging</li>
+             </ul>
+             <button id="YearlyPlan">Purchase Plan</button>
+           </div>
+           <div class="planCard">
+             <h1>Life Time  Plan</h1>
+             <h2>&#8358; 49,995</h2>
+             <p class="sub">&#8358; 0 Monthly subscription</p>
+             <h4>Free</h4>
+             <p>Features</p>
+             <ul>
+                <li class="items">Business Website</li>
+                <li class="items">Product Page</li>
+                <li>Contact Page</li>
+                <li>Admin Dashboard</li>
+                <li>Invoice Generator</li>
+                <li>Unlimited Item Per Invoice</li>
+                <li>Unlimited Invoice</li>
+                <li>WhatsApp Link Generator</li>
+                <li>Direct WhatsApp Messaging</li>
+                <li>Free Version Auto Update</li>
+                <li>Free Technical Support</li>
+                <li>Visual Payment Module. <strong>Automate payment</strong>  process even while you <strong>sleep </strong> 
+                </li>
+                <li><strong>A system worth over &#8358; 176,000</strong></li>
+             </ul>
+             <button id="lifetimePlan">Purchase Plan</button>
+           </div>
+           <div class="pop">
+              <div class="loader">
+                    <div class="mini">
+                        <div class="span"></div>
+                    <p id="respons">Initializing Payment...</p>
+                    </div>
+                </div> 
+                <div class="confirmPayment">
+                    <h2>Confirm Payment</h2>
+                    <div class="plain">
+                        <h3>Plan</h3>
+                        <h3 id="plan">Monthly</h3>
+                    </div>
+                    <div class="plain">
+                        <h3>Purchase Price</h3>
+                        <span>&#8358;<h3 id="purchasePrice">25,000</h3></span>
+                    </div>
+                    <div class="plain">
+                        <h3>Subscription</h3>
+                        <span>&#8358;<h3 id="subPrice">5,000</h3></span>
+                    </div>
+                    <div class="plain">
+                        <h3>Total</h3>
+                        <span>&#8358;<h3 id="totalPrice">30,000</h3></span>
+                    </div>
+                     <button id="payBtn">Pay <span>&#8358</span> <h4 id="displayT">30,000</h4></button>
+                </div>
+               
+           </div>
+           
+        </div>
+        <script src="./fireBase.js" type="module"></script>
+    <script type="module">
+         import {getData,addProduct} from "../fireBase.js"
+        var client;
+        try {
+            const {userDetails,productDetails} = await getData()
+            client = userDetails
+
+        } catch (error) {
+            console.log(error)
+        }
+        console.log(client);
+        
+        var body = document.getElementById("body")
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+            import{getDatabase, ref,set,child,remove,update,get} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyAevQ-rRmgvgh4Uz3oaEnkkqMuRV-i1M14",
+                authDomain: "business-a33a0.firebaseapp.com",
+                databaseURL: "https://business-a33a0-default-rtdb.firebaseio.com",
+                projectId: "business-a33a0",
+                storageBucket: "business-a33a0.firebasestorage.app",
+                messagingSenderId: "408074741884",
+                appId: "1:408074741884:web:ae1757e5bbe8eeb26941f9"
+            };
+            //am updating both the plan, the expiring date and payment date.
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase()
+        var monthlyPlanBtn = document.getElementById("monthlyPlan")
+         var yearlyPlanBtn = document.getElementById("YearlyPlan")
+          var lifeTimePlan = document.getElementById("lifetimePlan")
+          var pop = document.querySelector(".pop");
+          var payment = document.querySelector("#payBtn")
+
+        monthlyPlanBtn.addEventListener("click", ()=>{
+         processPayment("Monthly Plan")
+         pop.classList.add("show")
+        })
+        yearlyPlanBtn.addEventListener("click", ()=>{
+          processPayment("Yearly Plan")
+           pop.classList.add("show")
+        })
+        lifeTimePlan.addEventListener("click", ()=>{
+         processPayment("Life Time Plan")
+          pop.classList.add("show")
+        })
+        
+
+      async  function updatePayment(data){
+         var buckect = localStorage.getItem("bucket")
+            try {
+                await update(ref(db,buckect),{
+                    plan: data.plan,
+                    paymentDate: data.paymentDate ,
+                    expiringDate: data.expireDate
+                })
+                return "Successful"
+            } catch (error) {
+                return error
+            }
+              
+        }
+          function pay() {
+
+    let paymentReference = "REF-" + Date.now();   // unique reference
+
+    MonnifySDK.initialize({
+        amount: 2000,  // amount in Naira
+        currency: "NGN",
+        reference: paymentReference,
+        apiKey: "MK_TEST_MV1Y3NXE78", 
+        contractCode: "8678424030",
+
+        customerName: "John Doe",
+        customerEmail: "johndoe@gmail.com",
+
+        paymentDescription: "Payment for services",
+
+        // Callback when payment completes
+        onComplete: function(response) {
+            console.log("Payment Response:", response);
+
+            if (response.paymentReference === paymentReference &&
+                response.paymentStatus === "PAID") {
+
+                alert("Payment Successful!");
+            } else {
+                alert("Payment Not Completed.");
+            }
+        },
+
+        // Callback when user closes payment window
+        onClose: function() {
+            console.log("Payment popup closed");
+        }
+    });
+}
+
+// process payment calculations 
+
+function processPayment(plan){
+    body.style.overflowY = "hidden"
+    window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+    });
+
+    var planB = plan.replace(" ","").toLowerCase()
+            var numDays;
+            var paymentDate = Date.now()
+            var expireDate;
+           var oneDay = 24*60*60*100;
+           var price,sub
+        if(planB == "monthlyplan" ){
+              numDays = 30;
+              price = 999
+              sub = 699
+        }else if(planB == "yearlyplan"){
+            numDays = 365 ;
+            price = 2959;
+            sub = 4899
+            
+        }else{
+            numDays = 365 ;
+            price = 49995;
+            sub = 0;
+        }
+    expireDate = oneDay * numDays + paymentDate
+    var totalPrice = price + sub
+    var planDom = document.getElementById("plan")
+    var purchasePriceDom = document.getElementById("purchasePrice")
+    var subPriceDom = document.getElementById("subPrice")
+    var totalpriceDom = document.getElementById("totalPrice")
+    var btnPriceDom = document.getElementById("displayT")
+    planDom.textContent = plan;
+    purchasePriceDom.textContent = price.toLocaleString();
+    subPriceDom.textContent = sub.toLocaleString();
+    totalpriceDom.textContent = totalPrice.toLocaleString();
+    btnPriceDom.textContent = totalPrice
+
+
+
+        // we are suppose to call monnify api function then the moniffy function calls
+        //the updatePayment function
+     var res =  updatePayment({
+        plan:plan,
+        paymentDate:paymentDate,
+        expireDate:expireDate
+     });
+          if(res == "Successful"){
+            setTimeout(()=>{
+                window.location.href = "dashboard.html"
+                localStorage.setItem("logIn","true")
+            },5000)
+                
+          }
+}
+
+    </script>
+</body>
+</html>
