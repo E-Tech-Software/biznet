@@ -25,7 +25,7 @@
         var userDetails,productDetails
  
    var  var  businessPathName = window.location.pathname.split("/").pop();
-        localStorage.getItem("getPath");
+        localStorage.setItem("path",businessPathName);
     var businessHostName = window.location.hostname
     export async function getData() {
         var userBucket =  await get(ref(db,"businessUsers/" + businessPathName))
@@ -56,5 +56,24 @@ export async function addProduct(businessName, data) {
 export function add(){
     return businessPathName
 }
+
+export async function root() {
+    businessPathName = localStorage.getItem("path")
+        var userBucket =  await get(ref(db,"businessUsers/" + businessPathName))
+        if(userBucket.exists()){
+            
+            var productBucket = await get(ref(db,"products/" + businessPathName))
+            
+            //load page with the data
+            return{
+                userDetails : userBucket.val(),
+                productDetails : productBucket.val()
+            }
+            
+           //loadPage(userBucket.val(),productBucket.val())
+        }
+        alert("This user is not registered")
+}
+
 
 
