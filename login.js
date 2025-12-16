@@ -43,7 +43,6 @@
 
            //loadPage(userBucket.val(),productBucket.val())
         }
-        console.log(bisnessnames)
         alert("This user is not registered")
     }
 
@@ -63,6 +62,7 @@ export async function verifyLogin(name, password){
         }
         return "This user don't Exist on our database"
 }
+
 
 
 
