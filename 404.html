@@ -4,6 +4,7 @@
 
   const slug = location.pathname.split("/").pop();
   console.log("Extracted slug:", slug);
+  localStorage.setItem("businessSlug", slug);
 
   setTimeout(() => {
     window.location.replace(
