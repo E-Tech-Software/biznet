@@ -234,6 +234,9 @@
     </body>
     <script type="module" src="login.js"></script>
     <script type="module">
+            console.log("Testing")
+         var slug =  localStorage.getItem("businessSlug")
+         console.log(slug)
           import {getData,addProduct} from "../login.js"
           
         var businessName,products;
@@ -421,4 +424,5 @@
     </script>
     
 </body>
+
 </html>
