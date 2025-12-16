@@ -24,7 +24,7 @@
         // verify the business link
         var userDetails,productDetails
  let businessPathName = window.location.pathname.split("/").pop();
-      var slug =  localStorage.getItem("slug")
+      var slug =  localStorage.getItem("businessSlug")
      console.log("this",slug)
         localStorage.setItem("path",businessPathName);
     var businessHostName = window.location.hostname
@@ -77,6 +77,7 @@ export async function root() {
         alert("This user is not registered")
      console.log(businessPathName)
 }
+
 
 
 
