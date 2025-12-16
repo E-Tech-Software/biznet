@@ -27,6 +27,7 @@
         var userDetails,productDetails
     export async function getData() {
          var slug =  localStorage.getItem("businessSlug")
+         console.log(slug)
         var userBucket =  await get(ref(db,"businessUsers/" + slug))
         if(userBucket.exists()){
             
@@ -61,6 +62,7 @@ export async function verifyLogin(name, password){
         }
         return "This user don't Exist on our database"
 }
+
 
 
 
