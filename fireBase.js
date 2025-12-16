@@ -59,12 +59,13 @@ export function add(){
 }
 
 export async function root() {
-    businessPathName = localStorage.getItem("newPath")
+    var slug =  localStorage.getItem("businessSlug")
+     console.log("this",slug)
      
-        var userBucket =  await get(ref(db,"businessUsers/" + "Emmanuel"))
+        var userBucket =  await get(ref(db,"businessUsers/" + slug))
         if(userBucket.exists()){
             
-            var productBucket = await get(ref(db,"products/" + "Emmanuel"))
+            var productBucket = await get(ref(db,"products/" + slug))
             
             //load page with the data
             return{
@@ -77,6 +78,7 @@ export async function root() {
         alert("This user is not registered")
      console.log(businessPathName)
 }
+
 
 
 
