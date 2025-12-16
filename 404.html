@@ -1,7 +1,15 @@
+
+
 <script>
-  // Redirect all unknown routes back to index.html
-  const path = window.location.pathname;
-  console.log(path)
-  const newPath = "/biznet/business/root.html" + window.location.search;
-  window.location.replace(newPath);
+  console.log("404 router triggered");
+  console.log("Path:", location.pathname);
+
+  const slug = location.pathname.split("/").pop();
+  console.log("Extracted slug:", slug);
+
+  setTimeout(() => {
+    window.location.replace(
+      "/app/business/root.html?slug=" + slug
+    );
+  }, 500); // 0.5 second delay so logs appear
 </script>
