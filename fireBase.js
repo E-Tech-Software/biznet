@@ -23,16 +23,15 @@
             
         // verify the business link
         var userDetails,productDetails
- let businessPathName = window.location.pathname.split("/").pop();
       var slug =  localStorage.getItem("businessSlug")
      console.log("this",slug)
         localStorage.setItem("path",businessPathName);
     var businessHostName = window.location.hostname
     export async function getData() {
-        var userBucket =  await get(ref(db,"businessUsers/" + businessPathName))
+        var userBucket =  await get(ref(db,"businessUsers/" + slug))
         if(userBucket.exists()){
             
-            var productBucket = await get(ref(db,"products/" + businessPathName))
+            var productBucket = await get(ref(db,"products/" + slug))
             
             //load page with the data
             return{
@@ -78,6 +77,7 @@ export async function root() {
         alert("This user is not registered")
      console.log(businessPathName)
 }
+
 
 
 
