@@ -59,7 +59,7 @@ export function add(){
 }
 
 export async function root() {
-    var slug =  localStorage.getItem("businessSlug")
+    var slug =  new URLSearchParams(location.search).get("slug")
      console.log("this",slug)
      
         var userBucket =  await get(ref(db,"businessUsers/" + slug))
@@ -78,6 +78,7 @@ export async function root() {
         alert("This user is not registered")
      console.log(businessPathName)
 }
+
 
 
 
