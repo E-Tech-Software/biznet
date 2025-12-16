@@ -26,11 +26,11 @@
         // verify the business link
         var userDetails,productDetails
     export async function getData() {
-        var pathFinder = localStorage.getItem("pathFinder")
-        var userBucket =  await get(ref(db,"businessUsers/" + pathFinder))
+         var slug =  localStorage.getItem("businessSlug")
+        var userBucket =  await get(ref(db,"businessUsers/" + slug))
         if(userBucket.exists()){
             
-            var productBucket = await get(ref(db,"products/" + pathFinder))
+            var productBucket = await get(ref(db,"products/" + slug))
             
             //load page with the data
             return{
@@ -61,5 +61,6 @@ export async function verifyLogin(name, password){
         }
         return "This user don't Exist on our database"
 }
+
 
 
