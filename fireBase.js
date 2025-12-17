@@ -76,6 +76,20 @@ export async function root() {
 }
 
 
+export async function verifyLogin(name, password){
+     var userBucket =  await get(ref(db,"businessUsers/" + slug))
+        if(userBucket.exists()){
+            var userInfor = userBucket.val();
+                if(userInfor.password == password){
+                    window.location.href = "dashboard.html"
+                }
+                return "Incorrect Password"
+           //loadPage(userBucket.val(),productBucket.val())
+        }
+        return "This user don't Exist on our database"
+}
+
+
 
 
 
