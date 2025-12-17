@@ -88,7 +88,10 @@ export async function verifyLogin(name, password){
         }
         return "This user don't Exist on our database"
 }
-export const slugName = slug
+export function slugName(){
+     return slug
+}
+
 
 
 
