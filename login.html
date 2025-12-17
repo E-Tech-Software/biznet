@@ -51,8 +51,9 @@
     </div>
     <script type="module" src="./fireBase.js"></script>
     <script type="module">
-        import {verifyLogin,slugName} from "./fireBase.js"
-        var nameSlug = slugName();
+        import {verifyLogin,nameSlug} from "./fireBase.js"
+        var nameSlug = nameSlug();
+        console.log(nameSlug)
         var loginBtn = document.getElementById("loginBtn");
         var email = document.getElementById("email");
         var password = document.getElementById("password");
@@ -71,6 +72,7 @@
 </body>
 
 </html>
+
 
 
 
