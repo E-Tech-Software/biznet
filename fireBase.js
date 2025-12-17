@@ -45,7 +45,7 @@
         }
         alert("This user is not registered")
     }
-
+      
 export async function addProduct(businessName, data) {
     await push(ref(db, "products/" + businessName), data);
     return "Successfull";
@@ -93,6 +93,7 @@ export function nameSlug(){
      var data = "My name is " +slug
     return data
 }
+
 
 
 
