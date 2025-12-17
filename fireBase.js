@@ -82,6 +82,7 @@ export async function verifyLogin(name, password){
         if(userBucket.exists()){
             var userInfor = userBucket.val();
                 if(userInfor.password == password){
+                     localStorage.setItem("logIn","true")
                     window.location.href = "dashboard.html"
                 }
                 return "Incorrect Password"
@@ -94,6 +95,7 @@ export function nameSlug(){
      var data = slug
     return data
 }
+
 
 
 
