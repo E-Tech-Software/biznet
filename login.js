@@ -51,7 +51,9 @@ export async function addProduct(businessName, data) {
     return "Successfull";
 }
 export async function verifyLogin(name, password){
-     var userBucket =  await get(ref(db,"businessUsers/" + name))
+            var slug = localStorage.getItem("businessSlug");
+        console.log("me", slug)
+     var userBucket =  await get(ref(db,"businessUsers/" + slug))
         if(userBucket.exists()){
             var userInfor = userBucket.val();
                 if(userInfor.password == password){
@@ -62,6 +64,7 @@ export async function verifyLogin(name, password){
         }
         return "This user don't Exist on our database"
 }
+
 
 
 
