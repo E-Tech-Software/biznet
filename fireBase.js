@@ -77,7 +77,7 @@ export async function root() {
 
 
 export async function verifyLogin(name, password){
-     var userBucket =  await get(ref(db,"businessUsers/" + slug))
+     var userBucket =  await get(ref(db,"businessUsers/" + name))
         if(userBucket.exists()){
             var userInfor = userBucket.val();
                 if(userInfor.password == password){
@@ -93,6 +93,7 @@ export function nameSlug(){
      var data = slug
     return data
 }
+
 
 
 
