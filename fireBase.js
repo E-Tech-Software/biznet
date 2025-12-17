@@ -16,6 +16,7 @@
                 messagingSenderId: "408074741884",
                 appId: "1:408074741884:web:ae1757e5bbe8eeb26941f9"
             };
+         var slug;
 //set the business items in register and login page and store the business name
             // Initialize Firebase
             const app = initializeApp(firebaseConfig);
@@ -55,7 +56,7 @@ export function add(){
 }
 
 export async function root() {
-    var slug =  new URLSearchParams(location.search).get("slug")
+     slug =  new URLSearchParams(location.search).get("slug")
       localStorage.setItem("businessSlug", slug);
         var userBucket =  await get(ref(db,"businessUsers/" + slug))
         if(userBucket.exists()){
@@ -73,6 +74,7 @@ export async function root() {
         alert("This user is not registered")
      console.log(businessPathName)
 }
+
 
 
 
