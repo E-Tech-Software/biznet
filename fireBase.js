@@ -89,9 +89,11 @@ export async function verifyLogin(name, password){
         return "This user don't Exist on our database"
 }
 export function nameSlug(){
+  var slug =   localStorage.getItem("businessSlug");
      var data = "My name is " +slug
     return data
 }
+
 
 
 
