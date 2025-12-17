@@ -51,11 +51,11 @@
     </div>
     <script type="module" src="./fireBase.js"></script>
     <script type="module">
-        import {verifyLogin} from "./login.js"
+        import {verifyLogin,slugName} from "./fireBase.js"
         var loginBtn = document.getElementById("loginBtn");
         var email = document.getElementById("email");
         var password = document.getElementById("password");
-        email.value = slug
+        email.value = slugName
         loginBtn.addEventListener("click",()=>{
             if(email.value == "" && password.value == ""){
                 alert("Empty Fields")
@@ -70,5 +70,6 @@
 </body>
 
 </html>
+
 
 
