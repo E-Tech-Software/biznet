@@ -23,8 +23,6 @@
             
         // verify the business link
         var userDetails,productDetails
-      var slug =  localStorage.getItem("businessSlug")
-     console.log("this",slug)
     var businessHostName = window.location.hostname
     export async function getData() {
         var userBucket =  await get(ref(db,"businessUsers/" + slug))
@@ -75,6 +73,7 @@ export async function root() {
         alert("This user is not registered")
      console.log(businessPathName)
 }
+
 
 
 
