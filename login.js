@@ -26,7 +26,6 @@
         // verify the business link
         var userDetails,productDetails
     export async function getData() {
-         console.log("Testing")
          var slug =  localStorage.getItem("businessSlug")
          console.log(slug)
         var userBucket =  await get(ref(db,"businessUsers/" + slug))
@@ -64,6 +63,7 @@ export async function verifyLogin(name, password){
         }
         return "This user don't Exist on our database"
 }
+
 
 
 
