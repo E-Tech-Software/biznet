@@ -90,9 +90,10 @@ export async function verifyLogin(name, password){
 }
 export function nameSlug(){
   var slug =   localStorage.getItem("businessSlug");
-     var data = "My name is " +slug
+     var data = slug
     return data
 }
+
 
 
 
