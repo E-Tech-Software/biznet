@@ -52,7 +52,8 @@
     <script type="module" src="login.js"></script>
     <script type="module">
         import {verifyLogin} from "./login.js"
-        var pathFinderGet = localStorage.getItem("pathFinder");
+       var slug = localStorage.getItem("businessSlug");
+        console.log("me", slug)
         var loginBtn = document.getElementById("loginBtn");
         var email = document.getElementById("email");
         var password = document.getElementById("password");
@@ -69,4 +70,5 @@
         
     </script>
 </body>
+
 </html>
