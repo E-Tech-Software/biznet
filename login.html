@@ -49,13 +49,13 @@
         <input id="password" type="password" placeholder="Enter Pin Code">
         <button id="loginBtn">Login</button>
     </div>
-    <script type="module" src="login.js"></script>
+    <script type="module" src="./fireBase.js"></script>
     <script type="module">
         import {verifyLogin} from "./login.js"
         var loginBtn = document.getElementById("loginBtn");
         var email = document.getElementById("email");
         var password = document.getElementById("password");
-        email.value = pathFinderGet
+        email.value = slug
         loginBtn.addEventListener("click",()=>{
             if(email.value == "" && password.value == ""){
                 alert("Empty Fields")
@@ -70,4 +70,5 @@
 </body>
 
 </html>
+
 
