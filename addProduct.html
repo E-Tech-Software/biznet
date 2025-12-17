@@ -172,9 +172,9 @@
         
         
     </div>
-    <script type="module" src="fireBase.js"></script>
+    <script type="module" src="login.js"></script>
     <script type="module">
-        import {getData,addProduct} from "./fireBase.js"
+        import {getData,addProduct} from "./login.js"
         var businessName;
         try {
             const {userDetails,productDetails} = await getData()
@@ -271,4 +271,5 @@ async function submitProduct(data) {
 
     </script>
 </body>
+
 </html>
