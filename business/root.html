@@ -170,7 +170,7 @@
             <div class="headerDetails">
                 <h4 id="bizName">Adiddas Online Store</h4>
                 <p id="bizSlogan">All you need at the click of a button</p>
-                <button>All Products</button>
+                <button id="admin">Admin Panel</button>
             </div>
             <div class="headerImage">
                 <img id="bizlogo" src="" alt="">
@@ -225,7 +225,10 @@
     </div>
     <script type="module" src="../fireBase.js"></script>
      <script type="module">
-        localStorage.clear()
+         document.querySelector("#admin").addEventListener("click",()=>{
+            window.location.href = "login.html"
+        })
+       
          import {root,addProduct} from "../fireBase.js"
         var businessName,products;
         try {
@@ -309,3 +312,4 @@
 </body>
 
 </html>
+
