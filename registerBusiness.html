@@ -300,7 +300,7 @@
 
     // send file to appwrite
   async function sendFile(file){
-    var bucket = businessName.value;
+   
     var userBucket = await get(ref(db,"businessUsers/" + bucketFile))
     
         if(userBucket.exists()){
@@ -373,4 +373,5 @@ function planActive(plan){
 </body>
 
 </html>
+
 
