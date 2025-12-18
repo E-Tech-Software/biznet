@@ -262,7 +262,7 @@
         var date = Date.now();
 
          //check subscription
-          if(date <= client.expiringDate || client.expiringDate == "" ){
+          if(date >= client.expiringDate || client.expiringDate == "" ){
              // navigate to page expired if its expired
              window.location.href = "./noActivePlan.html"
           }
@@ -312,6 +312,7 @@
 </body>
 
 </html>
+
 
 
 
