@@ -289,7 +289,7 @@
           pop.classList.add("show")
         })
         
-          function pay(amount,plan) {
+     function pay(amount,plan) {
 
     let paymentReference = "REF-" + Date.now();   // unique reference
 
@@ -306,7 +306,7 @@
         paymentDescription: "Payment for services",
 
         // Callback when payment completes
-        onComplete: function(response) {
+        onComplete: async function(response) {
             console.log("Payment Response:", response);
 
             if (response.paymentStatus === "PAID") {
@@ -390,6 +390,7 @@ function processPayment(plan){
 </body>
 
 </html>
+
 
 
 
