@@ -306,6 +306,7 @@
          
         if(userBucket.exists()){
              console.log(userBucket)
+             console.log(userBucket.val())
             //userExists(userBucket.val())
         }else{
             const client = new Appwrite.Client()
@@ -375,6 +376,7 @@ function planActive(plan){
 </body>
 
 </html>
+
 
 
 
