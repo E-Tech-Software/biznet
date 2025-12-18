@@ -104,6 +104,7 @@ function cleanText(text) {
 }
 
 export async  function updatePayment(data){
+     alert(data)
      var buckect = localStorage.getItem("businessSlug")
             try {
                 await update(ref(db,"businessUsers/" + slug),{
@@ -128,6 +129,7 @@ export async function fetchData(){
      }
      
 }
+
 
 
 
