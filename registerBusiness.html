@@ -295,12 +295,12 @@
 
 
         //Check if account exist
-    var bucketFile = bizName.value
+    var bucketFile = businessName.value
         bucketFile = bucketFile.replace(" ","");
 
     // send file to appwrite
   async function sendFile(file){
-    var bucket = bizEmail.value.split(".")[0];
+    var bucket = businessName.value;
     var userBucket = await get(ref(db,"businessUsers/" + bucketFile))
     
         if(userBucket.exists()){
@@ -371,4 +371,5 @@ function planActive(plan){
         
     </script>
 </body>
+
 </html>
