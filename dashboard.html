@@ -263,6 +263,7 @@
             window.location.href = "creatInvoice.html"
         })
          document.querySelector("#goToStore").addEventListener("click",() => {
+             var slugName = nameSlug()
             window.location.href = "./business/index.html"
         })
         document.querySelector("#goToProfile").addEventListener("click",() => {
@@ -272,6 +273,7 @@
             window.location.href = "https://api.whatsapp.com/send/?phone=2348147309259&text&type=phone_number&app_absent=0"
         })
          import {getData,addProduct} from "./login.js"
+        import {nameSlug} from "./fireBase.js"
         var businessName,products,email,phone,name,img;
         email = document.querySelector("#contact")
         phone = document.querySelector("#contact")
@@ -335,4 +337,5 @@
 </body>
 
 </html>
+
 
