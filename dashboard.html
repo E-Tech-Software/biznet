@@ -264,7 +264,7 @@
         })
          document.querySelector("#goToStore").addEventListener("click",() => {
              var slugName = nameSlug()
-            window.location.href = "./business/index.html"
+            window.location.href = "./business/index.html?slug=" + slugName
         })
         document.querySelector("#goToProfile").addEventListener("click",() => {
             window.location.href = "productListPage.html"
@@ -337,5 +337,6 @@
 </body>
 
 </html>
+
 
 
