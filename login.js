@@ -48,7 +48,7 @@
 export async function addProduct(businessName, data) {
      var name = await cleanText(businessName)
     await push(ref(db, "products/" + name), data);
-    return " Successfull";
+    return "Successfull";
 }
 export async function verifyLogin(name, password){
             var slug = localStorage.getItem("businessSlug");
@@ -67,6 +67,7 @@ function cleanText(text) {
   var textCleaned = text.replace(/[^a-zA-Z0-9]/g, "");
      return textCleaned.toLowerCase()
 }
+
 
 
 
