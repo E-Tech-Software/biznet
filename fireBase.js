@@ -120,12 +120,14 @@ export async function fetchData(){
       var buckect = localStorage.getItem("businessSlug")
      try{
          var client = await get(ref(db,"businessUsers/" + buckect)) 
-          return client.val()
+          var val = client.val()
+          return val
      }catch(error){
           
      }
      
 }
+
 
 
 
