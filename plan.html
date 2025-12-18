@@ -309,10 +309,7 @@
         onComplete: function(response) {
             console.log("Payment Response:", response);
 
-            if (response.paymentReference === paymentReference &&
-                response.paymentStatus === "PAID") {
-                
-
+            if (response.paymentStatus === "PAID") {
                              // we are suppose to call monnify api function then the moniffy function calls
                             //the updatePayment function
                              var res = await updatePayment({
@@ -320,7 +317,7 @@
                                 paymentDate:paymentDate,
                                 expireDate:expireDate
                              });
-                alert("Payment Done")
+                                alert("Payment Done")
                                 console.log(res)
                                   if(res == "Successful"){
                                     setTimeout(()=>{
@@ -382,7 +379,7 @@ function processPayment(plan){
      
     
  payment.addEventListener("click",()=>{
-     alert("payed")
+     alert("payed me")
             pay(totalPrice,plan)
         })
      
@@ -393,6 +390,7 @@ function processPayment(plan){
 </body>
 
 </html>
+
 
 
 
