@@ -262,7 +262,7 @@
         </div>
         <script src="./fireBase.js" type="module"></script>
     <script type="module">
-         import {getData,addProduct} from "../fireBase.js"
+         import {getData,addProduct} from "./fireBase.js"
         var client;
         try {
             const {userDetails,productDetails} = await getData()
@@ -425,4 +425,5 @@ function processPayment(plan){
 
     </script>
 </body>
+
 </html>
