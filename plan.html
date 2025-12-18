@@ -262,12 +262,18 @@
         </div>
         <script src="./fireBase.js" type="module"></script>
     <script type="module">
-        import {updatePayment} from "./fireBase.js"
+        import {updatePayment,fetchData} from "./fireBase.js"
+        var client = fetchData()
         var monthlyPlanBtn = document.getElementById("monthlyPlan")
          var yearlyPlanBtn = document.getElementById("YearlyPlan")
           var lifeTimePlan = document.getElementById("lifetimePlan")
           var pop = document.querySelector(".pop");
           var payment = document.querySelector("#payBtn")
+            var numDays;
+            var paymentDate = Date.now()
+            var expireDate;
+           var oneDay = 24*60*60*100;
+           var price,sub
 
         monthlyPlanBtn.addEventListener("click", ()=>{
          processPayment("Monthly Plan")
@@ -282,34 +288,19 @@
           pop.classList.add("show")
         })
         
-
-      async  function updatePayment(data){
-         var buckect = localStorage.getItem("bucket")
-            try {
-                await update(ref(db,buckect),{
-                    plan: data.plan,
-                    paymentDate: data.paymentDate ,
-                    expiringDate: data.expireDate
-                })
-                return "Successful"
-            } catch (error) {
-                return error
-            }
-              
-        }
-          function pay() {
+          function pay(plan) {
 
     let paymentReference = "REF-" + Date.now();   // unique reference
 
     MonnifySDK.initialize({
-        amount: 2000,  // amount in Naira
+        amount: price,  // amount in Naira
         currency: "NGN",
         reference: paymentReference,
         apiKey: "MK_TEST_MV1Y3NXE78", 
         contractCode: "8678424030",
 
-        customerName: "John Doe",
-        customerEmail: "johndoe@gmail.com",
+        customerName: client.ceo
+        customerEmail: client.bizEmail,
 
         paymentDescription: "Payment for services",
 
@@ -320,7 +311,20 @@
             if (response.paymentReference === paymentReference &&
                 response.paymentStatus === "PAID") {
 
-                alert("Payment Successful!");
+                             // we are suppose to call monnify api function then the moniffy function calls
+                            //the updatePayment function
+                             var res =  updatePayment({
+                                plan:plan,
+                                paymentDate:paymentDate,
+                                expireDate:expireDate
+                             });
+                                  if(res == "Successful"){
+                                    setTimeout(()=>{
+                                        window.location.href = "dashboard.html"
+                                        localStorage.setItem("logIn","true")
+                                    },5000)
+                                        
+                                  }
             } else {
                 alert("Payment Not Completed.");
             }
@@ -336,6 +340,7 @@
 // process payment calculations 
 
 function processPayment(plan){
+
     body.style.overflowY = "hidden"
     window.scrollTo({
             top: 0,
@@ -343,11 +348,7 @@ function processPayment(plan){
     });
 
     var planB = plan.replace(" ","").toLowerCase()
-            var numDays;
-            var paymentDate = Date.now()
-            var expireDate;
-           var oneDay = 24*60*60*100;
-           var price,sub
+            
         if(planB == "monthlyplan" ){
               numDays = 30;
               price = 999
@@ -374,28 +375,16 @@ function processPayment(plan){
     subPriceDom.textContent = sub.toLocaleString();
     totalpriceDom.textContent = totalPrice.toLocaleString();
     btnPriceDom.textContent = totalPrice
+     
+    pay(plan)
 
-
-
-        // we are suppose to call monnify api function then the moniffy function calls
-        //the updatePayment function
-     var res =  updatePayment({
-        plan:plan,
-        paymentDate:paymentDate,
-        expireDate:expireDate
-     });
-          if(res == "Successful"){
-            setTimeout(()=>{
-                window.location.href = "dashboard.html"
-                localStorage.setItem("logIn","true")
-            },5000)
-                
-          }
+     
 }
 
     </script>
 </body>
 
 </html>
+
 
 
