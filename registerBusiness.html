@@ -302,6 +302,7 @@
   async function sendFile(file){
    
     var userBucket = await get(ref(db,"businessUsers/" + bucketFile))
+       console.log(userBucket)
     
         if(userBucket.exists()){
             userExists(userBucket.val())
@@ -373,5 +374,6 @@ function planActive(plan){
 </body>
 
 </html>
+
 
 
