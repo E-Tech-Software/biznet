@@ -376,15 +376,20 @@ function processPayment(plan){
     totalpriceDom.textContent = totalPrice.toLocaleString();
     btnPriceDom.textContent = totalPrice
      
-    pay(plan)
+    
 
      
 }
+        payment.addEventListener("click",()=>{
+            console.log(client)
+            pay(plan)
+        })
 
     </script>
 </body>
 
 </html>
+
 
 
 
