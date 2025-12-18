@@ -294,21 +294,12 @@
       window.location.href = "registerBusiness.html"
     })
         localStorage.clear()
-         import {getData,addProduct} from "./fireBase.js"
-        var businessName,products;
-        try {
-            const {userDetails,productDetails} = await getData()
-            localStorage.setItem("getPath",userDetails.businessName);
-            let pathq = window.location.pathname
-            console.log(pathq)
-
-        } catch (error) {
-            console.log(error)
-        }
+        
             </script>
 </body>
 
 </html>
+
 
 
 
