@@ -307,7 +307,6 @@
 
         // Callback when payment completes
         onComplete: function(response) {
-            console.log("Payment Response:", response);
 
             if (response.paymentStatus === "PAID") {
                 paymentResponse(plan)
@@ -364,7 +363,6 @@ function processPayment(plan){
      
     
  payment.addEventListener("click",()=>{
-     alert("payed me")
             pay(totalPrice,plan)
         })
      
@@ -392,6 +390,7 @@ function processPayment(plan){
 </body>
 
 </html>
+
 
 
 
