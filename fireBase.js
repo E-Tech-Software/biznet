@@ -47,7 +47,7 @@
     }
       
 export async function addProduct(businessName, data) {
-     var name = await nameSlug(businessName)
+     var name = await cleanText(businessName)
     await push(ref(db, "products/" + name), data);
     return name + " Successfull";
 }
@@ -97,6 +97,10 @@ export function nameSlug(){
 }
 
 
+function cleanText(text) {
+  var textCleaned = text.replace(/[^a-zA-Z0-9]/g, "");
+     return textCleaned.toLowerCase()
+}
 
 
 
