@@ -168,8 +168,8 @@
         var reponseMessage = document.getElementById("respons")
         var successImg = document.getElementById("loaderImg");
         var spanLoader = document.querySelector(".span")
-        var bucketFile = bizName.value
-        console.log(bucketFile)
+         var bucketFile;
+        
         
         var logoUrl;
         var globalFile;
@@ -251,7 +251,8 @@
     })
 
    submitBtn.addEventListener("click", async () => {
-   
+    bucketFile = bizName.value
+        console.log(bucketFile)
     var verifiedStatus = resultChecked();
     if (verifiedStatus == "valid") {
         try {
@@ -373,6 +374,7 @@ function planActive(plan){
 </body>
 
 </html>
+
 
 
 
