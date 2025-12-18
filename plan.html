@@ -289,12 +289,12 @@
           pop.classList.add("show")
         })
         
-          function pay(plan) {
+          function pay(amount,plan) {
 
     let paymentReference = "REF-" + Date.now();   // unique reference
 
     MonnifySDK.initialize({
-        amount: price,  // amount in Naira
+        amount: amount,  // amount in Naira
         currency: "NGN",
         reference: paymentReference,
         apiKey: "MK_TEST_MV1Y3NXE78", 
@@ -378,19 +378,18 @@ function processPayment(plan){
     btnPriceDom.textContent = totalPrice
      
     
-
+ payment.addEventListener("click",()=>{
+            pay(totalPrice,plan)
+        })
      
 }
-        payment.addEventListener("click",()=>{
-            console.log(client)
-            console.log(client.email)
-            pay()
-        })
+       
 
     </script>
 </body>
 
 </html>
+
 
 
 
