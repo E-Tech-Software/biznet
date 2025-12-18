@@ -46,7 +46,8 @@
     }
 
 export async function addProduct(businessName, data) {
-    await push(ref(db, "products/" + businessName), data);
+     var name = await cleanText(businessName)
+    await push(ref(db, "products/" + name), data);
     return "Successfull";
 }
 export async function verifyLogin(name, password){
@@ -63,6 +64,11 @@ export async function verifyLogin(name, password){
         }
         return "This user don't Exist on our database"
 }
+function cleanText(text) {
+  var textCleaned = text.replace(/[^a-zA-Z0-9]/g, "");
+     return textCleaned.toLowerCase()
+}
+
 
 
 
