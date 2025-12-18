@@ -49,7 +49,7 @@
 export async function addProduct(businessName, data) {
      var name = await nameSlug(businessName)
     await push(ref(db, "products/" + name), data);
-    return "Successfull";
+    return name + " Successfull";
 }
 
 export function add(){
@@ -95,6 +95,7 @@ export function nameSlug(){
      var data = slug
     return data
 }
+
 
 
 
