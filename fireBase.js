@@ -104,10 +104,7 @@ function cleanText(text) {
 }
 
 export async  function updatePayment(data){
-         var buckect = localStorage.getItem("businessSlug")
             try {
-                 var client = await get(ref(db,"businessUsers/" + buckect))
-                 
                 await update(ref(db,buckect),{
                     plan: data.plan,
                     paymentDate: data.paymentDate ,
@@ -119,6 +116,17 @@ export async  function updatePayment(data){
             }
               
         }
+export async function fetchData(){
+      var buckect = localStorage.getItem("businessSlug")
+     try{
+         var client = await get(ref(db,"businessUsers/" + buckect)) 
+          return client.val()
+     }catch(error){
+          
+     }
+     
+}
+
 
 
 
