@@ -251,8 +251,8 @@
     })
 
    submitBtn.addEventListener("click", async () => {
-    bucketFile = bizName.value
-        console.log(bucketFile)
+    bucketFile = await cleanText(bizName.value)
+       
     var verifiedStatus = resultChecked();
     if (verifiedStatus == "valid") {
         try {
@@ -368,12 +368,19 @@ function planActive(plan){
 
 }
         
+function cleanText(text) {
+  return text.replace(/[^a-zA-Z0-9]/g, "");
+}
+
+cleanText("My Business @ Name!"); 
+// "MyBusinessName"
 
         
     </script>
 </body>
 
 </html>
+
 
 
 
