@@ -307,7 +307,8 @@
         if(userBucket.exists()){
              console.log(userBucket)
              console.log(userBucket.val())
-             console.log(bucketFile)
+             var name = userBucket.val().businessName
+             console.log(name)
             //userExists(userBucket.val())
         }else{
             const client = new Appwrite.Client()
@@ -377,6 +378,7 @@ function planActive(plan){
 </body>
 
 </html>
+
 
 
 
