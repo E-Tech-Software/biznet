@@ -73,12 +73,12 @@ export async function root() {
             
            //loadPage(userBucket.val(),productBucket.val())
         }
-        alert("This user is not registered")
+        window.location.href = "noUser.html"
 }
 
 
 export async function verifyLogin(name, password){
-     console.log(name)
+    
      var userBucket =  await get(ref(db,"businessUsers/" + name))
         if(userBucket.exists()){
             var userInfor = userBucket.val();
@@ -102,6 +102,7 @@ function cleanText(text) {
   var textCleaned = text.replace(/[^a-zA-Z0-9]/g, "");
      return textCleaned.toLowerCase()
 }
+
 
 
 
