@@ -72,7 +72,6 @@ export async function root() {
            //loadPage(userBucket.val(),productBucket.val())
         }
         alert("This user is not registered")
-     console.log(businessPathName)
 }
 
 
@@ -95,6 +94,7 @@ export function nameSlug(){
      var data = slug
     return data
 }
+
 
 
 
