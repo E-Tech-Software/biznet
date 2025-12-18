@@ -262,37 +262,6 @@
         </div>
         <script src="./fireBase.js" type="module"></script>
     <script type="module">
-         import {getData,addProduct} from "./fireBase.js"
-        var client;
-        try {
-            const {userDetails,productDetails} = await getData()
-            client = userDetails
-
-        } catch (error) {
-            console.log(error)
-        }
-        console.log(client);
-        
-        var body = document.getElementById("body")
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-            import{getDatabase, ref,set,child,remove,update,get} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
-            // TODO: Add SDKs for Firebase products that you want to use
-            // https://firebase.google.com/docs/web/setup#available-libraries
-
-            // Your web app's Firebase configuration
-            const firebaseConfig = {
-                apiKey: "AIzaSyAevQ-rRmgvgh4Uz3oaEnkkqMuRV-i1M14",
-                authDomain: "business-a33a0.firebaseapp.com",
-                databaseURL: "https://business-a33a0-default-rtdb.firebaseio.com",
-                projectId: "business-a33a0",
-                storageBucket: "business-a33a0.firebasestorage.app",
-                messagingSenderId: "408074741884",
-                appId: "1:408074741884:web:ae1757e5bbe8eeb26941f9"
-            };
-            //am updating both the plan, the expiring date and payment date.
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const db = getDatabase()
         var monthlyPlanBtn = document.getElementById("monthlyPlan")
          var yearlyPlanBtn = document.getElementById("YearlyPlan")
           var lifeTimePlan = document.getElementById("lifetimePlan")
@@ -427,3 +396,4 @@ function processPayment(plan){
 </body>
 
 </html>
+
