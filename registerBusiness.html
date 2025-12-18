@@ -259,6 +259,7 @@
              body.style.overflowY = "hidden"
              loaderPop.classList.add("scale")
             const url = await sendFile(globalFile); // <-- FIXED
+             var webAddress = bizName.value
             const successMessage = await registerBusiness({
                 businessName:bizName.value,
                 businessLogo:url,
@@ -268,7 +269,7 @@
                 contact:bizPhone.value,
                 email:bizEmail.value,
                 password:logIn.value,
-                website:"https://e-tech-software.github.io/biznet/" + bizName.value.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+                website:"https://e-tech-software.github.io/biznet/" + webAddress.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
                 facebook:bizFacebook.value,
                 plan:"",
                 paymentDate:"",
@@ -381,6 +382,7 @@ cleanText("My Business @ Name!");
 </body>
 
 </html>
+
 
 
 
