@@ -300,12 +300,12 @@
         //Check if account exist
     // send file to appwrite
   async function sendFile(file){
-   console.log(bucketFile)
+
     var userBucket = await get(ref(db,"businessUsers/" + bucketFile))
        
          
         if(userBucket.exists()){
-            //userExists(userBucket.val())
+            userExists(userBucket.val())
         }else{
             const client = new Appwrite.Client()
             .setEndpoint("https://nyc.cloud.appwrite.io/v1") 
@@ -374,6 +374,7 @@ function planActive(plan){
 </body>
 
 </html>
+
 
 
 
