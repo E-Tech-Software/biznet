@@ -47,7 +47,8 @@
     }
       
 export async function addProduct(businessName, data) {
-    await push(ref(db, "products/" + businessName), data);
+     var name = await nameSlug(businessName)
+    await push(ref(db, "products/" + name), data);
     return "Successfull";
 }
 
@@ -94,6 +95,7 @@ export function nameSlug(){
      var data = slug
     return data
 }
+
 
 
 
