@@ -310,22 +310,7 @@
             console.log("Payment Response:", response);
 
             if (response.paymentStatus === "PAID") {
-                             // we are suppose to call monnify api function then the moniffy function calls
-                            //the updatePayment function
-                             var res = await updatePayment({
-                                plan:plan,
-                                paymentDate:paymentDate,
-                                expireDate:expireDate
-                             });
-                                alert("Payment Done")
-                                console.log(res)
-                                  if(res == "Successful"){
-                                    setTimeout(()=>{
-                                        window.location.href = "dashboard.html"
-                                        localStorage.setItem("logIn","true")
-                                    },5000)
-                                        
-                                  }
+                paymentResponse(plan)
             } else {
                 alert("Payment Not Completed.");
             }
@@ -384,12 +369,30 @@ function processPayment(plan){
         })
      
 }
-       
+       async function paymentResponse(plan){
+             // we are suppose to call monnify api function then the moniffy function calls
+             //the updatePayment function
+                  var res = await updatePayment({
+                           plan:plan,
+                           paymentDate:paymentDate,
+                            expireDate:expireDate
+                             });
+                     alert("Payment Done")
+                     console.log(res)
+                     if(res == "Successful"){
+                     setTimeout(()=>{
+                      window.location.href = "dashboard.html"
+                    localStorage.setItem("logIn","true")
+                },5000)
+                                        
+        }
+     }
 
     </script>
 </body>
 
 </html>
+
 
 
 
