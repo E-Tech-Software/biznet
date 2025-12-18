@@ -58,6 +58,7 @@ export function add(){
 
 export async function root() {
      slug =  new URLSearchParams(location.search).get("slug")
+     slug = await cleanText(slug)
       localStorage.setItem("businessSlug", slug);
         var userBucket =  await get(ref(db,"businessUsers/" + slug))
         if(userBucket.exists()){
@@ -101,6 +102,7 @@ function cleanText(text) {
   var textCleaned = text.replace(/[^a-zA-Z0-9]/g, "");
      return textCleaned.toLowerCase()
 }
+
 
 
 
