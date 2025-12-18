@@ -261,12 +261,11 @@
   function loadPage(client,products){
         var date = Date.now();
 
-        // check subscription
-        //  if(date <= client.expiringDate ){
-        //     // navigate to page expired if its expired
-        //     window.location.href = "PageExpired.html"
-        //     return
-        //  }
+         //check subscription
+          if(date <= client.expiringDate || client.expiringDate == "" ){
+             // navigate to page expired if its expired
+             window.location.href = "./noActivePlan.html"
+          }
          // run this function for sub not expired
          
          var shuffledArray = shuffleArray(products);
@@ -313,6 +312,7 @@
 </body>
 
 </html>
+
 
 
 
