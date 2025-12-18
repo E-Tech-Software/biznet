@@ -63,7 +63,7 @@ export async function root() {
         if(userBucket.exists()){
             
             var productBucket = await get(ref(db,"products/" + slug))
-            
+            console.log(slug)
             //load page with the data
             return{
                 userDetails : userBucket.val(),
@@ -95,6 +95,7 @@ export function nameSlug(){
      var data = slug
     return data
 }
+
 
 
 
