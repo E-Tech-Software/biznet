@@ -369,7 +369,8 @@ function planActive(plan){
 }
         
 function cleanText(text) {
-  return text.replace(/[^a-zA-Z0-9]/g, "");
+  var textCleaned = text.replace(/[^a-zA-Z0-9]/g, "");
+     return textCleaned.toString.toLoWerCase()
 }
 
 cleanText("My Business @ Name!"); 
@@ -380,6 +381,7 @@ cleanText("My Business @ Name!");
 </body>
 
 </html>
+
 
 
 
