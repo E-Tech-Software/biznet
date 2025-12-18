@@ -339,7 +339,7 @@
             email.textContent = userDetails.email
             addres.textContent = userDetails.businessAddress
             website.textContent = userDetails.website
-            web.textContent = "https://e-tech-software.github.io/biznet/" + 
+            web.textContent = "https://e-tech-software.github.io/biznet/" + userDetails.businessName.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
             slogan.textContent = userDetails.businessSlogan
             whatsapp.textContent = userDetails.contact
             contact.textContent = userDetails.contact
@@ -375,8 +375,10 @@
                     
                 
         })
+
     </script>
 </body>
 
 </html>
+
 
