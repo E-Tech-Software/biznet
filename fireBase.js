@@ -43,7 +43,7 @@
             })
            //loadPage(userBucket.val(),productBucket.val())
         }
-        alert("This user is not registered")
+        window.location.href = "../noUser.html"
     }
       
 export async function addProduct(businessName, data) {
@@ -73,7 +73,7 @@ export async function root() {
             
            //loadPage(userBucket.val(),productBucket.val())
         }
-        window.location.href = "noUser.html"
+        window.location.href = "../noUser.html"
 }
 
 
@@ -102,6 +102,7 @@ function cleanText(text) {
   var textCleaned = text.replace(/[^a-zA-Z0-9]/g, "");
      return textCleaned.toLowerCase()
 }
+
 
 
 
