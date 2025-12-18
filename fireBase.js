@@ -103,6 +103,22 @@ function cleanText(text) {
      return textCleaned.toLowerCase()
 }
 
+export async  function updatePayment(data){
+         var buckect = localStorage.getItem("businessSlug")
+            try {
+                await update(ref(db,buckect),{
+                    plan: data.plan,
+                    paymentDate: data.paymentDate ,
+                    expiringDate: data.expireDate
+                })
+                return "Successful"
+            } catch (error) {
+                return error
+            }
+              
+        }
+
+
 
 
 
