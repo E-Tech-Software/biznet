@@ -127,8 +127,8 @@
 <body id="body">
     <div class="main_Body">
         <img id="logoImg" src="images/add item.svg" alt="">
-        <label for="">Upload a brand product(In a transparent background)</label>
-        <input id="logo" type="file">
+        <label id="infor">Upload a brand Identity (Best in a transparent background)</label>
+        <input id="logo" type="file" accept="image/png">
         <input id="bisName" type="text" placeholder="Business Name" maxlength="15">
         <input id="bizSlogan" type="text" placeholder="Business Slogan">
          <input id="bizAddress" type="text" placeholder="Business Address">
@@ -206,17 +206,34 @@
 
 
 
+ var  MAX_SIZE = 300 * 1024
         bizLogo.addEventListener("change", function(){
             var file = this.files[0]
-            if(file){
+            if(file.type !== "image/png"){
+                //return not png file
+                alert("use the site remove.bg to remove background for a better feel ")
+                bizLogo.value = ""
+                return
+                
+            }
+            if(file.size > MAX_SIZE){
+               alert("Image size must not exceed 250KB ") 
+                bizLogo.value = ""
+                return
+            }
+            if(!file){
+                 alert("no file detected")
+                  bizLogo.value = ""
+                return
+            }
+           
                 globalFile = file
                  var url = URL.createObjectURL(file)
                  logoUrl = url
-                logoImg.src = logoUrl
-                return
-            }
-            alert("no file detected")
+                logoImg.src = logoUrl;
+           
         })
+        
         
     //check empty fields 
     var resultChecked = () => {
@@ -384,6 +401,7 @@ cleanText("My Business @ Name!");
 </body>
 
 </html>
+
 
 
 
