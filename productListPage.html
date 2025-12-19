@@ -317,6 +317,27 @@
     <script type="module" src="login.js"></script>
     <script type="module">
          import {getData,addProduct} from "./login.js"
+
+         import { showLoader, hideLoader } from "./export.js";
+
+                // Inject loader HTML immediately
+           setTimeout(()=>{
+                 hideLoader();
+            },5000);
+                (async function () {
+                  const res = await fetch("./loader.html");
+                  const html = await res.text();
+                
+                  document.getElementById("loader-container").innerHTML = html;
+                
+                  // SHOW loader instantly
+                  showLoader();
+                })();
+
+
+
+
+        
         var businessName,products,ceo,quant,owner,addres,web,store,logo,email,website,slogan,whatsapp,contact,face,name;
         ceo = document.querySelector("#ceo")
         owner = document.querySelector("#name")
@@ -381,6 +402,7 @@
 </body>
 
 </html>
+
 
 
 
