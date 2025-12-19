@@ -234,6 +234,9 @@
          import { showLoader, hideLoader } from "../export.js";
 
                 // Inject loader HTML immediately
+           setTimeout(()=>{
+                 hideLoader();
+            },5000)
                 (async function () {
                   const res = await fetch("../loader.html");
                   const html = await res.text();
@@ -243,11 +246,6 @@
                   // SHOW loader instantly
                   showLoader();
                 })();
-                
-                // Hide loader when page is fully loaded
-                window.addEventListener("load", () => {
-                  hideLoader();
-                });
 
 
          
@@ -336,6 +334,7 @@
 </body>
 
 </html>
+
 
 
 
