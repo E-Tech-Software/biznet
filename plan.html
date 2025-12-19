@@ -292,7 +292,7 @@
  function pay(amount,plan) {
 
     let paymentReference = "REF-" + Date.now();   // unique reference
-
+        console.log(client)
     MonnifySDK.initialize({
         amount: amount,  // amount in Naira
         currency: "NGN",
@@ -390,6 +390,7 @@ function processPayment(plan){
 </body>
 
 </html>
+
 
 
 
