@@ -167,6 +167,7 @@
         
       
     </style>
+    <div id="loader-container"></div>
     <div class="body">
         <div class="header">
             <div class="headerDetails">
@@ -229,6 +230,27 @@
      <script type="module">
 
          import {root,addProduct} from "../fireBase.js"
+
+         import { showLoader, hideLoader } from "./loader.js";
+
+                // Inject loader HTML immediately
+                (async function () {
+                  const res = await fetch("../loader.html");
+                  const html = await res.text();
+                
+                  document.getElementById("loader-container").innerHTML = html;
+                
+                  // SHOW loader instantly
+                  showLoader();
+                })();
+                
+                // Hide loader when page is fully loaded
+                window.addEventListener("load", () => {
+                  hideLoader();
+                });
+
+
+         
         var businessName,products;
               document.querySelector("#admin").addEventListener("click",()=>{
             window.location.href = "../login.html"
@@ -314,6 +336,7 @@
 </body>
 
 </html>
+
 
 
 
