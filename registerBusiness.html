@@ -299,7 +299,7 @@
             if(successMessage == "Successfull"){
                 setTimeout(()=>{
                     window.location.href = "plan.html"
-                    localStorage.setItem("businessSlug", bizName.value)
+                    localStorage.setItem("businessSlug", bucketFile)
                 },5000)
                
                 reponseMessage.textContent = "redirecting...";
@@ -402,6 +402,7 @@ cleanText("My Business @ Name!");
 </body>
 
 </html>
+
 
 
 
