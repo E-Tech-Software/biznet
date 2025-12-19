@@ -234,13 +234,18 @@
             price.value = ""
             wrepper.style.display = "none"
         })
+       var MAX_SIZE = 300 * 1024
        imagePicker.addEventListener("change",function (){
         var file = this.files[0]
-        globalFile = file
-        if(file){
+        if(file.size > MAX_SIZE){
+            alert("File exceed the conventional 300KB Size. Please compress file before uploading")
+            imagePicker.value = ""
+            return
+        }
+            globalFile = file
             imagePreview.src = URL.createObjectURL(file)
             imageUrl = URL.createObjectURL(file)
-        }
+        
        })
        async function send(file){
              const client = new Appwrite.Client()
@@ -273,5 +278,6 @@ async function submitProduct(data) {
 </body>
 
 </html>
+
 
 
