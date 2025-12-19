@@ -275,6 +275,21 @@
         })
          import {getData,addProduct} from "./login.js"
         import {nameSlug} from "./fireBase.js"
+         import { showLoader, hideLoader } from "./export.js";
+
+                // Inject loader HTML immediately
+           setTimeout(()=>{
+                 hideLoader();
+            },5000);
+                (async function () {
+                  const res = await fetch("./loader.html");
+                  const html = await res.text();
+                
+                  document.getElementById("loader-container").innerHTML = html;
+                
+                  // SHOW loader instantly
+                  showLoader();
+                })();
         var businessName,products,email,phone,name,img;
         email = document.querySelector("#contact")
         phone = document.querySelector("#contact")
@@ -338,6 +353,7 @@
 </body>
 
 </html>
+
 
 
 
