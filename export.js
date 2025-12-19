@@ -1,17 +1,9 @@
-import { showLoader, hideLoader } from "./loader.js";
+export function showLoader() {
+  const loader = document.getElementById("global-loader");
+  if (loader) loader.classList.remove("hidden");
+}
 
-// Inject loader HTML immediately
-(async function () {
-  const res = await fetch("./loader.html");
-  const html = await res.text();
-
-  document.getElementById("loader-container").innerHTML = html;
-
-  // SHOW loader instantly
-  showLoader();
-})();
-
-// Hide loader when page is fully loaded
-window.addEventListener("load", () => {
-  hideLoader();
-});
+export function hideLoader() {
+  const loader = document.getElementById("global-loader");
+  if (loader) loader.classList.add("hidden");
+}
