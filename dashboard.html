@@ -313,7 +313,7 @@
                 
 
         } catch (error) {
-            console.log(error)
+            alert(error)
         }
 
         document.querySelector(".btn").addEventListener("click",()=>{
@@ -322,7 +322,6 @@
 
         products.forEach((product,index)=>{
             var clone = tableRow.content.cloneNode(true)
-            console.log(product)
            var sn = clone.querySelector("#productId")
            sn.textContent = index + 1
            var name = clone.querySelector("#productName");
@@ -338,22 +337,22 @@
             navBar.classList.remove("show_nav_bar")
         })
         let path = location.pathname.split("/").pop();
-        console.log(path)
+        
         var date = Date.now()
          var oneDayInMiliSeconds = 24*60*60*1000 * 30 + date
          var dateSr = new Date(oneDayInMiliSeconds)
-        console.log(date)
-        console.log(oneDayInMiliSeconds)
-        console.log(dateSr)
+       
+
          var item = localStorage.setItem("name","Emmanuel")
         var getValue = localStorage.getItem("name")
-    console.log(getValue)
+  
 
     </script>
   
 </body>
 
 </html>
+
 
 
 
