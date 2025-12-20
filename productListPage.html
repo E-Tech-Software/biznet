@@ -222,20 +222,7 @@
         </div>
         <div class="body_body">
             <div id="cardBody" class="card_body">
-                <div class="card_wrapper">
-                    <div class="card">
-                        <img src="/images/female top.jpg" alt="">
-                        <h2>T-Shirt Body Hug</h2>
-                        <h1>&#8358;15,000</h1>
-                        <span>Place Order</span>
-                    </div>
-                    <div class="card">
-                        <img src="/images/man shirt.jpg" alt="">
-                        <h2>T-Shirt Body Hug</h2>
-                        <h1>&#8358;9,700</h1>
-                        <span>Place Order</span>
-                    </div>
-                </div>
+               
             </div>
             <div id="storeBody" class="details_body">
               <li><img src="images/store.svg" alt="">
@@ -399,11 +386,39 @@
                     
                 
         })
+const cardBody = document.getElementById("cardBody");
+
+for (let i = 0; i < products.length; i += 2) {
+
+  // create a row
+  const wrapper = document.createElement("div");
+  wrapper.className = "card_wrapper";
+
+  // add up to 2 cards per row
+  for (let j = i; j < i + 2 && j < products.length; j++) {
+    const product = products[j];
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h2>${product.name}</h2>
+      <h1>&#8358;${product.price.toLocaleString()}</h1>
+      <span>Place Order</span>
+    `;
+
+    wrapper.appendChild(card);
+  }
+
+  cardBody.appendChild(wrapper);
+}
 
     </script>
 </body>
 
 </html>
+
 
 
 
