@@ -402,9 +402,9 @@ for (let i = 0; i < products.length; i += 2) {
     card.className = "card";
 
     card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
-      <h2>${product.name}</h2>
-      <h1>&#8358;${product.price.toLocaleString()}</h1>
+      <img src="${product.ProductUrl}" alt="${product.name}">
+      <h2>${product.productName}</h2>
+      <h1>&#8358;${product.productPrice.toLocaleString()}</h1>
       <span>Place Order</span>
     `;
 
@@ -418,6 +418,7 @@ for (let i = 0; i < products.length; i += 2) {
 </body>
 
 </html>
+
 
 
 
