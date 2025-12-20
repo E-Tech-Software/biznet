@@ -39,11 +39,11 @@
             
             var logInBtn = document.querySelector("#loginBtn").addEventListener("click",()=>{
                 localStorage.setItem("pathFinder",businessPathName);
-                window.location.href = "login.html"
+                window.location.href = "./login.html"
             })
            //loadPage(userBucket.val(),productBucket.val())
         }
-        window.location.href = "../noUser.html"
+        window.location.href = "./noUser.html"
     }
       
 export async function addProduct(businessName, data) {
@@ -129,6 +129,7 @@ export async function fetchData(){
      }
      
 }
+
 
 
 
