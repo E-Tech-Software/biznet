@@ -403,10 +403,10 @@ for (let i = 0; i < products.length; i += 2) {
     card.className = "card";
 
     card.innerHTML = `
-      <img src="${product.ProductUrl}" alt="${product.name}">
-      <h2>${product.productName}</h2>
-      <h1>&#8358;${product.productPrice.toLocaleString()}</h1>
-      <span>Place Order</span>
+      <img id="image" src="${product.ProductUrl}" alt="${product.name}">
+      <h2 id="productName">${product.productName}</h2>
+      <h1 id="price">&#8358;${product.productPrice.toLocaleString()}</h1>
+      <span id="order">Place Order</span>
     `;
 
     wrapper.appendChild(card);
@@ -414,11 +414,26 @@ for (let i = 0; i < products.length; i += 2) {
 
   cardBody.appendChild(wrapper);
 }
+        var orderBtns = document.querySelectorAll("#order");
+   orderBtns.forEach((btn)=>{
+    btn.addEventListener("click" ,(e)=>{
+        var target = e.target
+        var parentNode = target.parentNode
+        var product = parentNode.querySelector("#productName").textContent
+         var productPrice = parentNode.querySelector("#price").textContent
+          //var product = parentNode.querySelector("#productName")
+        console.log(product,productPrice)
+
+    })
+    
+    
+   })
 
     </script>
 </body>
 
 </html>
+
 
 
 
