@@ -73,7 +73,7 @@ export async function root() {
             
            //loadPage(userBucket.val(),productBucket.val())
         }
-        window.location.href = "./noUser.html"
+        window.location.href = "../noUser.html"
 }
 
 
@@ -129,6 +129,7 @@ export async function fetchData(){
      }
      
 }
+
 
 
 
