@@ -437,22 +437,22 @@ for (let i = 0; i < products.length; i += 2) {
          var productPrice = parentNode.querySelector("#price").textContent
           //var product = parentNode.querySelector("#productName")
           var productImage = parentNode.querySelector("#image").src;
-        //   var name = businessName.textContent
-        //   var url = logo.src;
-        //   var ceoName = ceo.textContent;
-        //   var phoneNumber = contact.textContent;
+           var name = businessName.textContent
+           var url = logo.src;
+           var ceoName = ceo.textContent;
+           var phoneNumber = contact.textContent;
           var data = {
             productImage : productImage,
             productName : product,
             productPrice : productPrice,
-            // businessOwner: ceoName,
-            // url : url,
-            // contact : phoneNumber,
-            // businessName : name.textContent
+             businessOwner: ceoName,
+             url : url,
+             contact : phoneNumber,
+             businessName : name.textContent
 
           }
           localStorage.setItem("productPageData",JSON.stringify(data))
-            window.location.href = "singlePage.html"
+            window.location.href = "./singlePage.html"
     })
     
     
@@ -462,6 +462,7 @@ for (let i = 0; i < products.length; i += 2) {
 </body>
 
 </html>
+
 
 
 
