@@ -399,13 +399,9 @@ function processPayment(plan){
                            paymentDate:paymentDate,
                             expireDate:expireDate
                              });
-                     alert("Payment Done")
-                     console.log(res)
                      if(res == "Successful"){
-                     setTimeout(()=>{
                       window.location.href = "dashboard.html"
                     localStorage.setItem("logIn","true")
-                },5000)
                                         
         }
      }
@@ -414,6 +410,7 @@ function processPayment(plan){
 </body>
 
 </html>
+
 
 
 
