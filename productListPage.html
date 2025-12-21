@@ -413,21 +413,7 @@ for (let i = 0; i < products.length; i += 2) {
   }
 
   cardBody.appendChild(wrapper);
-}
-        var orderBtns = document.querySelectorAll("#order");
-   orderBtns.forEach((btn)=>{
-    btn.addEventListener("click" ,(e)=>{
-        var target = e.target
-        var parentNode = target.parentNode
-        var product = parentNode.querySelector("#productName").textContent
-         var productPrice = parentNode.querySelector("#price").textContent
-          //var product = parentNode.querySelector("#productName")
-        console.log(product,productPrice)
-
-    })
-    
-    
-   })
+)
     var orderBtns = document.querySelectorAll("#order");
    orderBtns.forEach((btn)=>{
     btn.addEventListener("click" ,(e)=>{
@@ -462,6 +448,7 @@ for (let i = 0; i < products.length; i += 2) {
 </body>
 
 </html>
+
 
 
 
