@@ -192,11 +192,11 @@
         <div class="user">
             <h6>Store Details</h6>
             <div class="storeDetailsHolder">
-                <img src="images/addidas.png" alt="">
+                <img class = "storeImg" src="images/addidas.png" alt="">
                 <div class="infor">
-                <h3>E-Tech Software</h3>
-                <h5>Nwankwo Emmanuel</h5>
-                <h6>08147309259</h6>
+                <h3 class = "storeName">E-Tech Software</h3>
+                <h5 class = "ceoName">Nwankwo Emmanuel</h5>
+                <h6 class ="ceoContact">08147309259</h6>
                 </div>
         </div>
         </div>
@@ -215,7 +215,10 @@
             document.querySelector(".pPrice").src = data.productImage
             document.querySelector(".pName").textContent = data.productName
             document.querySelector(".price").textContent = data.productPrice
-             console.log(data);
+            document.querySelector(".storeImg").src = data.url
+            document.querySelector(".storeName").textContent = data.businessName
+            document.querySelector(".ceoName").textContent = data.businessOwner
+            document.querySelector(".ceoContact").textContent = data.contact
         })
         document.querySelector(".orderNow").addEventListener("click",()=>{
             var sample = `Hello 👋, I would like to place an order through your website with the details below:
