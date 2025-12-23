@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://sdk.monnify.com/plugin/monnify.js"></script>
+   <script src="https://js.paystack.co/v1/inline.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -316,34 +316,29 @@
  function pay(amount,plan) {
 
     let paymentReference = "REF-" + Date.now();   // unique reference
-        console.log(client)
-    MonnifySDK.initialize({
-        amount: amount,  // amount in Naira
+
+       let handler = PaystackPop.setup({
+        key: "pk_test_9c90132682faee2d1b3d42ca1e65a35ec9fb54dd", // ✅ YOUR PUBLIC KEY
+        email: client.email, // required
+        amount: amount * 100, // ₦5,000 (Paystack uses kobo)
         currency: "NGN",
-        reference: paymentReference,
-        apiKey: "MK_TEST_MV1Y3NXE78", 
-        contractCode: "8678424030",
 
-        customerName: client.ceo,
-        customerEmail: client.email,
+        ref: paymentReference,
 
-        paymentDescription: "Payment for services",
+        callback: function (response) {
+            // ✅ This runs AFTER successful payment
+            console.log("Payment reference:", response.reference);
 
-        // Callback when payment completes
-        onComplete: function(response) {
-
-            if (response.paymentStatus === "PAID") {
-                paymentResponse(plan)
-            } else {
-                alert("Payment Not Completed.");
-            }
+            // send reference for verification
+            verifyPayment(response.reference,plan);
         },
 
-        // Callback when user closes payment window
-        onClose: function() {
-            console.log("Payment popup closed");
+        onClose: function () {
+            alert("Payment window closed");
         }
     });
+
+    handler.openIframe(); // 🔥 OPENS PAYSTACK POPUP
 }
 
 // process payment calculations 
@@ -405,6 +400,28 @@ function processPayment(plan){
                                         
         }
      }
+
+    // verify payment here
+    function verifyPayment(reference,plan) {
+    fetch("https://script.google.com/macros/s/AKfycbz95TCWcKQvdh7WxT_ZOC-3-B8OBCX1UgATHeLh49VtXDv6H5OfcmNBgiXEdWob_A/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            reference: reference
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.data && data.data.status === "success") {
+            paymentResponse(plan)
+        } else {
+            alert("Payment verification failed");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Verification error");
+    });
+}
 
     </script>
 </body>
