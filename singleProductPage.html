@@ -219,6 +219,7 @@
             document.querySelector(".storeName").textContent = data.businessName
             document.querySelector(".ceoName").textContent = data.businessOwner
             document.querySelector(".ceoContact").textContent = data.contact
+            contact = data.contact
         })
         document.querySelector(".orderNow").addEventListener("click",()=>{
             var sample = `Hello 👋, I would like to place an order through your website with the details below:
@@ -231,12 +232,11 @@
 
              Please confirm availability, delivery fee, and payment method.Thank you.
             `
-            var sendMessage = "Hello 👋, \n I would like to place an order through your website with the details below: \n\n • Product: ${data.productName}• Quantity: {{QUANTITY}} Please confirm availability, delivery fee, and payment method.Thank you."
-            placeOrderOnWhatsApp("2348147309259",sample)
+            var ownerContact = contact
+            placeOrderOnWhatsApp(ownerContact,sample)
         })
 
         function placeOrderOnWhatsApp(contact,message){
-            alert(contact)
             var encodeMessage = encodeURIComponent(message)
             var url = `https://wa.me/${contact}?text=${message}`;
             window.open(url, "_blank");
