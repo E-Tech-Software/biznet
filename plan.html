@@ -316,11 +316,10 @@
  function pay(amount,plan) {
 
     let paymentReference = "REF-" + Date.now();   // unique reference
-      var money = 200
        let handler = PaystackPop.setup({
         key: "pk_live_d2d0170419093ac4377d4192ba52c2de83233e7e", // ✅ YOUR PUBLIC KEY
         email: client.email, // required
-        amount: money * 100, // ₦5,000 (Paystack uses kobo)
+        amount: amount * 100, // ₦5,000 (Paystack uses kobo)
         currency: "NGN",
 
         ref: paymentReference,
@@ -427,6 +426,7 @@ function processPayment(plan){
 </body>
 
 </html>
+
 
 
 
